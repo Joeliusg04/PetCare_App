@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Tipo_de_servicio">
+        <item>Paseo</item>
+        <item>Cuidado</item>
+        <item>Peluqueria</item>
+        <item>Veterinario</item>
+        <item>Adiestramiento</item>
+    </string-array>
+    <string-array name="dias">
+        <item>Lunes</item>
+        <item>Martes</item>
+        <item>Miercoles</item>
+        <item>Jueves</item>
+        <item>Viernes</item>
+        <item>Sábado</item>
+        <item>Domingo</item>
+    </string-array>
+    <string-array name="horas">
+        <item>00:00</item>
+        <item>01:00</item>
+        <item>02:00</item>
+        <item>03:00</item>
+        <item>04:00</item>
+        <item>05:00</item>
+        <item>06:00</item>
+        <item>07:00</item>
+        <item>08:00</item>
+        <item>09:00</item>
+        <item>10:00</item>
+        <item>11:00</item>
+        <item>12:00</item>
+        <item>13:00</item>
+        <item>14:00</item>
+        <item>15:00</item>
+        <item>16:00</item>
+        <item>17:00</item>
+        <item>18:00</item>
+        <item>19:00</item>
+        <item>20:00</item>
+        <item>21:00</item>
+        <item>22:00</item>
+        <item>23:00</item>
+    </string-array>
+    <string-array name="localidad">
+        <item>Barcelona</item>
+        <item>Lerida</item>
+        <item>Gerona</item>
+        <item>Tarragona</item>
+        <item>Madrid</item>
+        <item>Murcia</item>
+        <item>Valencia</item>
+        <item>Castellón</item>
+        <item>Alicante</item>
+        <item>Jaen</item>
+        <item>Cádiz</item>
+        <item>Huelva</item>
+        <item>Sevilla</item>
+        <item>Málaga</item>
+        <item>Córdoba</item>
+        <item>Granada</item>
+        <item>Huesca</item>
+        <item>Zaragoza</item>
+        <item>Teruel</item>
+        <item>Navarra</item>
+        <item>La Rioja</item>
+        <item>Vizcaya</item>
+        <item>Gipúzcoa</item>
+        <item>Álava</item>
+        <item>Cantabria</item>
+        <item>Asturias</item>
+        <item>Lugo</item>
+        <item>La Coruña</item>
+        <item>Pontevedra</item>
+        <item>Orense</item>
+        <item>León</item>
+        <item>Palencia</item>
+        <item>Burgos</item>
+        <item>Zamora</item>
+        <item>Valladolid</item>
+        <item>Soria</item>
+        <item>Salamanca</item>
+        <item>Ávila</item>
+        <item>Segovia</item>
+        <item>Guadalajara</item>
+        <item>Toledo</item>
+        <item>Cuenca</item>
+        <item>Ciudad Real</item>
+        <item>Albacete</item>
+        <item>Cáceres</item>
+        <item>Badajoz</item>
+        <item>Mallorca</item>
+        <item>Menorca</item>
+        <item>Cabrera</item>
+        <item>Ibiza</item>
+        <item>Formentera</item>
+        <item>La Palma</item>
+        <item>La Gomera</item>
+        <item>El Hierro</item>
+        <item>Tenerife</item>
+        <item>Gran Canaria</item>
+        <item>Fuerteventura</item>
+        <item>Lanzarote</item>
+    </string-array>
+</resources>
