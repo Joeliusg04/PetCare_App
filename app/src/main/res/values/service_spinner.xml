@@ -7,15 +7,7 @@
         <item>Veterinario</item>
         <item>Adiestramiento</item>
     </string-array>
-    <string-array name="dias">
-        <item>Lunes</item>
-        <item>Martes</item>
-        <item>Miercoles</item>
-        <item>Jueves</item>
-        <item>Viernes</item>
-        <item>Sábado</item>
-        <item>Domingo</item>
-    </string-array>
+
     <string-array name="horas">
         <item>00:00</item>
         <item>01:00</item>

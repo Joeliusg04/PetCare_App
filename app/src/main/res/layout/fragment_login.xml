@@ -112,6 +112,7 @@
             android:layout_height="50dp"
             android:foregroundGravity="top"
             android:src="@drawable/google"
+            android:translationZ="100dp"
             app:layout_constraintBottom_toBottomOf="@id/google"
             app:layout_constraintStart_toStartOf="@id/google"
             app:layout_constraintTop_toTopOf="@id/google"
