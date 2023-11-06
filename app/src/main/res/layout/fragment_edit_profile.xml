@@ -20,6 +20,38 @@
         android:background="@color/sec1"
         android:padding="20dp">
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/userImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/edit_slide_container"
+            app:layout_constraintBottom_toTopOf="@id/confirm_edit"
+            app:cardCornerRadius="50dp">
+
+            <ImageView
+                android:id="@+id/userImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_launcher_background"
+                android:scaleType="centerCrop"
+                />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/confirm_edit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Cambiar Imagen"
+            android:textColor="@color/white"
+            android:background="@color/principal"
+            app:layout_constraintBottom_toTopOf="@id/name"
+            app:layout_constraintStart_toStartOf="@id/edit_slide_container"
+            app:layout_constraintTop_toBottomOf="@id/userImg"
+            app:layout_constraintEnd_toEndOf="@id/edit_slide_container"
+            app:layout_constraintWidth_percent="0.75" />
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/name"
@@ -30,7 +62,7 @@
             android:textColorHint="@color/white"
             app:errorEnabled="false"
             app:boxBackgroundColor="@color/principal"
-            app:layout_constraintTop_toTopOf="@id/edit_slide_container"
+            app:layout_constraintTop_toBottomOf="@id/confirm_edit"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/age">
