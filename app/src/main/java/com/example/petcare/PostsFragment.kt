@@ -20,8 +20,8 @@ class PostsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        val activity = requireActivity() as MainActivity
-//        activity.setBottomNavigationVisible(true)
+        val activity = requireActivity() as MainActivity
+        activity.setBottomNavigationVisible(true)
 
     }
 
