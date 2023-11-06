@@ -26,13 +26,13 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
     }
-    fun setBottomNavigationVisible(visible: Boolean) {
-        if (visible) {
-            bottomNavigationView.visibility = View.VISIBLE
-        } else {
-            bottomNavigationView.visibility = View.GONE
-        }
-    }
+//    fun setBottomNavigationVisible(visible: Boolean) {
+//        if (visible) {
+//            bottomNavigationView.visibility = View.VISIBLE
+//        } else {
+//            bottomNavigationView.visibility = View.GONE
+//        }
+//    }
 
 
 }
