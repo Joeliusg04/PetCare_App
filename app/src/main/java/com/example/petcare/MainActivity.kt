@@ -17,14 +17,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val bottomNavigationView = binding.bottomNavigation
+        bottomNavigationView = binding.bottomNavigation
+
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navController = navHostFragment.navController
         bottomNavigationView.setupWithNavController(navController)
 
         val appBarConfiguration = AppBarConfiguration(setOf(R.id.profileFragment, R.id.postsFragment, R.id.publishFragment,R.id.menuFragment))
         setupActionBarWithNavController(navController, appBarConfiguration)
-
     }
 
 
