@@ -27,6 +27,9 @@ class LaunchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+//        val activity = requireActivity() as MainActivity
+//        activity.setBottomNavigationVisible(false)
+
         CoroutineScope(Dispatchers.IO).launch {
             delay(2500L)
             withContext(Dispatchers.Main) {
