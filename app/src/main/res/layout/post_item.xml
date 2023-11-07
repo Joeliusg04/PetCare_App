@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@color/sec1">
+
+    <ImageView
+        android:id="@+id/image_item"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.90"
+        app:layout_constraintWidth_percent="0.25"
+        android:src="@drawable/logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="5dp"
+
+        />
+
+    <TextView
+        android:id="@+id/title_item"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.25"
+        android:text="Titulo de ejemplo"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/image_item"
+        app:layout_constraintTop_toTopOf="@id/image_item"
+        android:layout_marginStart="5dp"
+        />
+
+    <TextView
+        android:id="@+id/service_item"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.25"
+        android:text="Servicio"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/image_item"
+        app:layout_constraintTop_toBottomOf="@id/title_item"
+        android:layout_marginStart="5dp"
+        />
+
+    <TextView
+        android:id="@+id/date_item"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.25"
+        android:text="dd/mm/yyyy"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/image_item"
+        app:layout_constraintTop_toBottomOf="@id/service_item"
+        android:layout_marginStart="5dp"
+
+        />
+
+    <TextView
+        android:id="@+id/time_item"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.25"
+        android:text="hh:mm-hh:mm"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/date_item"
+        app:layout_constraintTop_toBottomOf="@id/service_item"
+        android:layout_marginStart="15dp"
+        />
+    <TextView
+        android:id="@+id/locate_item"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.25"
+        android:text="Localidad"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/service_item"
+        app:layout_constraintTop_toTopOf="@id/service_item"
+        android:layout_marginStart="15dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
