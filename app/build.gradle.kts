@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
     id ("androidx.navigation.safeargs")
+    id ("kotlin-kapt")
 }
 
 android {
@@ -76,5 +77,8 @@ dependencies {
     implementation ("com.airbnb.android:lottie:3.4.0")
 
     implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
+
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    kapt ("com.github.bumptech.glide:compiler:4.12.0")
 
 }
