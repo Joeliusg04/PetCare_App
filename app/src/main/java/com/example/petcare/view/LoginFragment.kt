@@ -33,25 +33,25 @@ class LoginFragment : Fragment() {
 
         binding.continuar.setOnClickListener{
             findNavController().navigate(R.id.action_loginFragment_to_postsFragment)
-            if (binding.rememberCheckbox.isChecked){
-                println("Bienvenido")
-                myPreferences.edit {
-                    putString("Correo electronico", binding.nickname.toString())
-                    putString("Contraseña", binding.password.toString())
-                }
-            }
-            FirebaseAuth.getInstance().
-            signInWithEmailAndPassword(email, binding.etPassword.text.toString())
-                .addOnCompleteListener {
-                    if(it.isSuccessful){
-                        val emailLogged = it.result?.user?.email
-                        val action = LoginFragmentDirections.actionLoginFragmentToPostsFragment(emailLogged!!)
-                        findNavController().navigate(action)
-                    }
-                    else{
-                        Toast.makeText(requireContext(),"ERROR EN EL CORREO O CONTRASEÑA, VUELVA A INTENTARLO",Toast.LENGTH_SHORT).show()
-                    }
-                }
+//            if (binding.rememberCheckbox.isChecked){
+//                println("Bienvenido")
+//                myPreferences.edit {
+//                    putString("Correo electronico", binding.nickname.toString())
+//                    putString("Contraseña", binding.password.toString())
+//                }
+//            }
+//            FirebaseAuth.getInstance().
+//            signInWithEmailAndPassword(email, binding.etPassword.text.toString())
+//                .addOnCompleteListener {
+//                    if(it.isSuccessful){
+//                        val emailLogged = it.result?.user?.email
+//                        val action = LoginFragmentDirections.actionLoginFragmentToPostsFragment(emailLogged!!)
+//                        findNavController().navigate(action)
+//                    }
+//                    else{
+//                        Toast.makeText(requireContext(),"ERROR EN EL CORREO O CONTRASEÑA, VUELVA A INTENTARLO",Toast.LENGTH_SHORT).show()
+//                    }
+//                }
 
         }
 

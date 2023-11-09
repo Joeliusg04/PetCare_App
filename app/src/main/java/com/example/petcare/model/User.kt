@@ -1,7 +1,6 @@
 package com.example.model
 
-import com.example.getMd5Digest
-import com.example.myRealm
+
 import kotlinx.serialization.Serializable
 
 @Serializable
