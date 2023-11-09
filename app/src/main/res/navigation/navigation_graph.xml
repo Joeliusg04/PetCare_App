@@ -47,7 +47,11 @@
         android:id="@+id/postsFragment"
         android:name="com.example.petcare.view.PostsFragment"
         android:label="fragment_posts"
-        tools:layout="@layout/fragment_posts" />
+        tools:layout="@layout/fragment_posts" >
+        <argument
+            android:name="email"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.petcare.view.ProfileFragment"
