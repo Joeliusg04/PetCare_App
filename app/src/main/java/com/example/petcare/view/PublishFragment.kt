@@ -1,4 +1,4 @@
-package com.example.petcare
+package com.example.petcare.view
 import androidx.fragment.app.Fragment
 import android.app.DatePickerDialog
 import android.os.Bundle

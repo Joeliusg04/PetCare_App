@@ -1,4 +1,4 @@
-package com.example.petcare
+package com.example.petcare.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.petcare.R
 import com.example.petcare.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -23,7 +24,12 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         bottomNavigationView.setupWithNavController(navController)
 
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.profileFragment, R.id.postsFragment, R.id.publishFragment,R.id.menuFragment))
+        val appBarConfiguration = AppBarConfiguration(setOf(
+            R.id.profileFragment,
+            R.id.postsFragment,
+            R.id.publishFragment,
+            R.id.menuFragment
+        ))
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
