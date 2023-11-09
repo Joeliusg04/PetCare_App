@@ -1,12 +1,12 @@
-package com.example.petcare
+package com.example.petcare.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.example.petcare.R
 import com.example.petcare.databinding.FragmentSignupBinding
 
 class SignupFragment : Fragment() {
