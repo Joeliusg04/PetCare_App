@@ -56,6 +56,12 @@ dependencies {
 
     implementation ("com.firebaseui:firebase-ui-auth:7.2.0")
 
+    implementation ("com.google.firebase:firebase-storage-ktx")
+    
+
+    implementation ("com.google.firebase:firebase-firestore-ktx")
+
+
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

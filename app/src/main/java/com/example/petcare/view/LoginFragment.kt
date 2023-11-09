@@ -1,5 +1,6 @@
 package com.example.petcare.view
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,7 +12,7 @@ import androidx.core.content.edit
 import androidx.navigation.fragment.findNavController
 import com.example.petcare.R
 import com.example.petcare.databinding.FragmentLoginBinding
-import com.google.firebase.auth.FirebaseAuth
+    import com.google.firebase.auth.FirebaseAuth
 
 class LoginFragment : Fragment() {
 
@@ -30,18 +31,20 @@ class LoginFragment : Fragment() {
         binding.signup.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
         }
+        myPreferences =
+            requireActivity().getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
 
         binding.continuar.setOnClickListener{
             findNavController().navigate(R.id.action_loginFragment_to_postsFragment)
             if (binding.rememberCheckbox.isChecked){
                 println("Bienvenido")
                 myPreferences.edit {
-                    putString("Correo electronico", binding.nickname.toString())
-                    putString("Contraseña", binding.password.toString())
+                    putString("email", binding.nickname.editText.toString())
+                    putString("password", binding.password.editText.toString())
                 }
             }
             FirebaseAuth.getInstance().
-            signInWithEmailAndPassword(email, binding.etPassword.text.toString())
+            signInWithEmailAndPassword(binding.nickname.editText.toString(), binding.password.editText.toString())
                 .addOnCompleteListener {
                     if(it.isSuccessful){
                         val emailLogged = it.result?.user?.email
