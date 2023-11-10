@@ -16,17 +16,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var bottomNavigationView: BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-<<<<<<<<< Temporary merge branch 1:app/src/main/java/com/example/petcare/MainActivity.kt
-        setContentView(R.layout.activity_main)
-        binding= ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        val bottomNavigationView = binding.bottomNavigation
-=========
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         bottomNavigationView = binding.bottomNavigation
 
->>>>>>>>> Temporary merge branch 2:app/src/main/java/com/example/petcare/view/MainActivity.kt
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navController = navHostFragment.navController
         bottomNavigationView.setupWithNavController(navController)
@@ -39,7 +32,11 @@ class MainActivity : AppCompatActivity() {
         ))
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
+
+
+
     fun setBottomNavigationVisible(visible: Boolean) {
+
         if (visible) {
             bottomNavigationView.visibility = View.VISIBLE
         } else {
