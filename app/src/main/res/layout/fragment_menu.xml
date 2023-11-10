@@ -3,11 +3,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.MenuFragment">
+    android:background="@color/background"
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Menu" />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MenuFragment">
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/myservice"
+        android:background="@color/sec1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="My services"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.75" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/servicedone"
+        android:background="@color/sec1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Services done"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/myservice"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.75" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/complain"
+        android:background="@color/sec1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Complain"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/servicedone"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.75" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/logout"
+        android:background="@color/sec1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Log Out"
+        android:textColor="#F44336"
+        app:layout_constraintTop_toBottomOf="@id/complain"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.75" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
