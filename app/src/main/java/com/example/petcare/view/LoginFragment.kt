@@ -52,7 +52,7 @@ class LoginFragment : Fragment() {
                         findNavController().navigate(action)
                     }
                     else{
-                        Toast.makeText(requireContext(),"ERROR EN EL CORREO O CONTRASEÑA, VUELVA A INTENTARLO",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(),"Bienvenido",Toast.LENGTH_SHORT).show()
                     }
                 }
 
