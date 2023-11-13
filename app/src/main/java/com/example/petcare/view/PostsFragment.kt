@@ -13,9 +13,10 @@ import com.example.model.Post
 import com.example.model.User
 import com.example.petcare.databinding.FragmentPostsBinding
 import com.example.petcare.view.MainActivity
+import com.example.petcare.viewmodel.OnClickListener
 import com.example.petcare.viewmodel.PostsAdapter
 
-class PostsFragment : Fragment() {
+class PostsFragment : Fragment(), OnClickListener {
     private lateinit var userAdapter: PostsAdapter
     private lateinit var linearLayoutManager: RecyclerView.LayoutManager
     lateinit var binding: FragmentPostsBinding
@@ -33,7 +34,7 @@ class PostsFragment : Fragment() {
         val activity = requireActivity() as MainActivity
         activity.setBottomNavigationVisible(true)
 
-        userAdapter = PostsAdapter(getUsers())
+        userAdapter = PostsAdapter(getUsers(), this)
         linearLayoutManager = LinearLayoutManager(context)
 
         binding.recyclerView.apply {
@@ -46,25 +47,28 @@ class PostsFragment : Fragment() {
     }
     @RequiresApi(Build.VERSION_CODES.O)
     private fun getUsers(): MutableList<Post>{
-        val users = mutableListOf<Post>()
-        users.add(Post(1, User(1,"","","","","","",""), User(1,"","","","","","",""),
-            listOf<User>(),"1 Pastor aleman","","","Paseo","16:00-19:00","24/11/2023","5€","Barcelona",))
-        users.add(Post(1, User(1,"","","","","","",""), User(1,"","","","","","",""),
-            listOf<User>(),"2 Bulldogs","","","Paseo","07:00-10:00","26/11/2023","5€","Cádiz",))
-        users.add(Post(1, User(1,"","","","","","",""), User(1,"","","","","","",""),
-            listOf<User>(),"1 Gato persa","","","Veterinario","20:00-22:00","10/11/2023","5€","Madrid",))
-        users.add(Post(1, User(1,"","","","","","",""), User(1,"","","","","","",""),
-            listOf<User>(),"2 Jaskys","","","Cuidado","08:00-09:00","1/12/2023","5€","Lugo",))
-        users.add(Post(1, User(1,"","","","","","",""), User(1,"","","","","","",""),
-            listOf<User>(),"3 Gatos sphynx","","","Veterinario","14:00-16:00","12/11/2023","5€","Tarragona",))
-        users.add(Post(1, User(1,"","","","","","",""), User(1,"","","","","","",""),
-            listOf<User>(),"1 Braco de weimar","","","Peluqueria","18:00-17:00","24/12/2023","5€","Valencia",))
-        users.add(Post(1, User(1,"","","","","","",""), User(1,"","","","","","",""),
-            listOf<User>(),"1 Conejo","","","Cuidado","17:00-20:00","10/01/2024","5€","Málaga",))
+        val posts = mutableListOf<Post>()
+        posts.add(Post(1, User(1,"","","","","","",""), User(1,"","","","","","",""),
+            listOf(),"1 Pastor aleman","","","Paseo","16:00-19:00","24/11/2023","5€","Barcelona",))
+        posts.add(Post(2, User(2,"","","","","","",""), User(1,"","","","","","",""),
+            listOf(),"2 Bulldogs","","","Paseo","07:00-10:00","26/11/2023","5€","Cádiz",))
+        posts.add(Post(3, User(3,"","","","","","",""), User(1,"","","","","","",""),
+            listOf(),"1 Gato persa","","","Veterinario","20:00-22:00","10/11/2023","5€","Madrid",))
+        posts.add(Post(4, User(4,"","","","","","",""), User(1,"","","","","","",""),
+            listOf(),"2 Jaskys","","","Cuidado","08:00-09:00","1/12/2023","5€","Lugo",))
+        posts.add(Post(5, User(5,"","","","","","",""), User(1,"","","","","","",""),
+            listOf(),"3 Gatos sphynx","","","Veterinario","14:00-16:00","12/11/2023","5€","Tarragona",))
+        posts.add(Post(6, User(6,"","","","","","",""), User(1,"","","","","","",""),
+            listOf(),"1 Braco de weimar","","","Peluqueria","18:00-17:00","24/12/2023","5€","Valencia",))
+        posts.add(Post(7, User(7,"","","","","","",""), User(1,"","","","","","",""),
+            listOf(),"1 Conejo","","","Cuidado","17:00-20:00","10/01/2024","5€","Málaga",))
 
-        return users
+        return posts
     }
 
+    override fun onClick(post: Post) {
+
+    }
 
 
 }

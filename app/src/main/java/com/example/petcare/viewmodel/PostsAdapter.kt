@@ -11,10 +11,16 @@ import com.example.model.Post
 import com.example.petcare.R
 import com.example.petcare.databinding.PostItemBinding
 
-class PostsAdapter (private val posts: List<Post>): RecyclerView.Adapter<PostsAdapter.ViewHolder>() {
+class PostsAdapter (private val posts: List<Post>,private val listener: OnClickListener): RecyclerView.Adapter<PostsAdapter.ViewHolder>() {
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         val binding = PostItemBinding.bind(view)
+        fun setListener(post: Post){
+            binding.root.setOnClickListener {
+                listener.onClick(post)
+            }
+        }
     }
+
     private lateinit var context: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -28,7 +34,9 @@ class PostsAdapter (private val posts: List<Post>): RecyclerView.Adapter<PostsAd
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val post = posts[position]
+
         with(holder){
+            setListener(post)
             binding.titleItem.text = post.tittle
             binding.serviceItem.text = post.serviceType
             binding.dateItem.text = post.postDate
