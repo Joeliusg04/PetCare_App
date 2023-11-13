@@ -26,9 +26,6 @@
             android:id="@+id/action_signupFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
         <action
-            android:id="@+id/action_signupFragment_to_loginFragment2"
-            app:destination="@id/loginFragment" />
-        <action
             android:id="@+id/action_signupFragment_to_postsFragment"
             app:destination="@id/postsFragment" />
     </fragment>
@@ -52,7 +49,7 @@
         android:label="fragment_posts"
         tools:layout="@layout/fragment_posts" >
         <argument
-            android:name="email"
+            android:name="mail"
             app:argType="string" />
     </fragment>
     <fragment

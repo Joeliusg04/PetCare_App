@@ -8,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.navigation.fragment.findNavController
 import com.example.petcare.R
@@ -39,12 +41,12 @@ class LoginFragment : Fragment() {
             if (binding.rememberCheckbox.isChecked){
                 println("Bienvenido")
                 myPreferences.edit {
-                    putString("email", binding.nickname.editText.toString())
-                    putString("password", binding.password.editText.toString())
+                    putString("email", binding.nickname.editText?.text.toString())
+                    putString("password", binding.password.editText?.text.toString())
                 }
             }
             FirebaseAuth.getInstance().
-            signInWithEmailAndPassword(binding.nickname.editText.toString(), binding.password.editText.toString())
+            signInWithEmailAndPassword(binding.nickname.editText?.text.toString(), binding.password.editText?.text.toString())
                 .addOnCompleteListener {
                     if(it.isSuccessful){
                         val emailLogged = it.result?.user?.email
@@ -52,7 +54,7 @@ class LoginFragment : Fragment() {
                         findNavController().navigate(action)
                     }
                     else{
-                        Toast.makeText(requireContext(),"Bienvenido",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(),"Correo electrónico o contraseña incorrecta, vuelvelo a intentor",Toast.LENGTH_SHORT).show()
                     }
                 }
 
@@ -60,5 +62,18 @@ class LoginFragment : Fragment() {
 
 
     }
+
+    override fun onResume() {
+        super.onResume()
+        val supportActionBar: ActionBar? = (requireActivity() as AppCompatActivity).supportActionBar
+        if (supportActionBar != null) supportActionBar.hide()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        val supportActionBar: ActionBar? = (requireActivity() as AppCompatActivity).supportActionBar
+        if (supportActionBar != null) supportActionBar.show()
+    }
+
 
 }
