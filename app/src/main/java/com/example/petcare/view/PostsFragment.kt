@@ -15,9 +15,10 @@ import com.example.model.Post
 import com.example.model.User
 import com.example.petcare.databinding.FragmentPostsBinding
 import com.example.petcare.view.MainActivity
+import com.example.petcare.viewmodel.OnClickListener
 import com.example.petcare.viewmodel.PostsAdapter
 
-class PostsFragment : Fragment() {
+class PostsFragment : Fragment(), OnClickListener {
     private lateinit var userAdapter: PostsAdapter
     private lateinit var linearLayoutManager: RecyclerView.LayoutManager
     lateinit var binding: FragmentPostsBinding
@@ -36,7 +37,7 @@ class PostsFragment : Fragment() {
         val activity = requireActivity() as MainActivity
         activity.setBottomNavigationVisible(true)
 
-        userAdapter = PostsAdapter(getUsers())
+        userAdapter = PostsAdapter(getUsers(), this)
         linearLayoutManager = LinearLayoutManager(context)
 
         binding.recyclerView.apply {
@@ -66,6 +67,10 @@ class PostsFragment : Fragment() {
             listOf<User>(),"1 Conejo","","","Cuidado","17:00-20:00","10/01/2024","5€","Málaga",))
 
         return users
+    }
+
+    override fun onClick(post: Post) {
+        TODO("Not yet implemented")
     }
 
 }

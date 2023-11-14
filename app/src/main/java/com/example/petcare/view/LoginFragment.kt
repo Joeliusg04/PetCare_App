@@ -15,7 +15,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.petcare.R
 import com.example.petcare.databinding.FragmentLoginBinding
     import com.google.firebase.auth.FirebaseAuth
-
 class LoginFragment : Fragment() {
 
     lateinit var binding: FragmentLoginBinding
@@ -24,56 +23,61 @@ class LoginFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
-        binding= FragmentLoginBinding.inflate(layoutInflater)
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentLoginBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        myPreferences = requireActivity().getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
+        firebaseAuth = FirebaseAuth.getInstance()
+
+        // Recuperar datos si "Recordar inicio de sesión" está marcado
+        if (myPreferences.contains("email") && myPreferences.contains("password")) {
+            findNavController().navigate(R.id.action_loginFragment_to_postsFragment)
+        }
+
         binding.signup.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
         }
 
-        firebaseAuth = FirebaseAuth.getInstance()
-
-        binding.continuar.setOnClickListener{
-            if (binding.rememberCheckbox.isChecked){
-                println("Bienvenido")
-                myPreferences.edit {
-                    putString("email", binding.nickname.editText?.text.toString())
-                    putString("password", binding.password.editText?.text.toString())
-                }
-            }
-
+        binding.continuar.setOnClickListener {
             val email = binding.nickname.editText?.text.toString()
             val pass = binding.password.editText?.text.toString()
 
-            if (email.isNotEmpty() && pass.isNotEmpty()) {
+            if (binding.rememberCheckbox.isChecked) {
+                println("Bienvenido")
+                myPreferences.edit {
+                    putString("email", email)
+                    putString("password", pass)
+                }
+            }
 
-                firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        Toast.makeText(requireContext(), "Bienvenido", Toast.LENGTH_SHORT)
-                            .show()
-                        val action= LoginFragmentDirections.actionLoginFragmentToPostsFragment(email)
+            if (email.isNotEmpty() && pass.isNotEmpty()) {
+                firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(requireContext(), "Bienvenido", Toast.LENGTH_SHORT).show()
+                        val action = LoginFragmentDirections.actionLoginFragmentToPostsFragment(email)
                         findNavController().navigate(action)
                     } else {
-                        Toast.makeText(requireContext(), "Error con el email o contraseña, vuelvelo a intentar", Toast.LENGTH_SHORT)
-                            .show()
-
+                        Toast.makeText(
+                            requireContext(),
+                            "Error con el email o contraseña, vuelvelo a intentar",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             } else {
                 Toast.makeText(
                     requireContext(),
-                    "Has dejado espacios vacios, rellenalos todos",
+                    "Has dejado espacios vacíos, rellénalos todos",
                     Toast.LENGTH_SHORT
                 ).show()
-
             }
-
         }
-
     }
 
     override fun onResume() {
@@ -87,5 +91,4 @@ class LoginFragment : Fragment() {
         val supportActionBar: ActionBar? = (requireActivity() as AppCompatActivity).supportActionBar
         if (supportActionBar != null) supportActionBar.show()
     }
-
 }
