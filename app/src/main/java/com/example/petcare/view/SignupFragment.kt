@@ -18,7 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 class SignupFragment : Fragment() {
 
     lateinit var binding: FragmentSignupBinding
-    private val db = FirebaseFirestore.getInstance()
+    private lateinit var firebaseAuth: FirebaseAuth
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
@@ -29,32 +29,55 @@ class SignupFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.login.setOnClickListener{
+        firebaseAuth = FirebaseAuth.getInstance()
+
+        binding.login.setOnClickListener {
             findNavController().navigate(R.id.action_signupFragment_to_loginFragment)
         }
 
         binding.signup.setOnClickListener {
+            val email = binding.email.editText?.text.toString()
+            val name = binding.nickname.editText?.text.toString()
+            val pass = binding.password.editText?.text.toString()
+            val confirmPass = binding.confPassword.editText?.text.toString()
 
-            FirebaseAuth.getInstance().
-            createUserWithEmailAndPassword(binding.email.editText?.text.toString(), binding.password.editText?.text.toString())
-                .addOnCompleteListener {
-                    if(it.isSuccessful){
-                        val emailLogged = it.result?.user?.email
-                        db.collection("users").document(emailLogged!!).set(
-                            hashMapOf("name" to binding.nickname.editText?.text.toString())
-                        )
-                        Toast.makeText(requireContext(), "Usuario creado con éxito", Toast.LENGTH_SHORT).show()
-                        val action = SignupFragmentDirections.actionSignupFragmentToPostsFragment(emailLogged)
-                        findNavController().navigate(action)
+            if (name.isNotEmpty() && email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty()) {
+                if (pass == confirmPass) {
+
+                    firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            Toast.makeText(
+                                requireContext(),
+                                "Usuario creado con exito!",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
+                            findNavController().navigate(R.id.action_signupFragment_to_postsFragment)
+                        } else {
+                            Toast.makeText(
+                                requireContext(),
+                                "Error al registrar usuario",
+                                Toast.LENGTH_SHORT
+                            ).show()
+
+                        }
                     }
-                    else{
-                        Toast.makeText(requireContext(), "Error al registrar usuario", Toast.LENGTH_SHORT).show()
-                    }
+                } else {
+                    Toast.makeText(requireContext(), "Error con la contraseña", Toast.LENGTH_SHORT)
+                        .show()
                 }
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    "Has dejado espacios vacios, rellenalos todos",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+            }
         }
 
-    }
 
+    }
     override fun onResume() {
         super.onResume()
         val supportActionBar: ActionBar? = (requireActivity() as AppCompatActivity).supportActionBar

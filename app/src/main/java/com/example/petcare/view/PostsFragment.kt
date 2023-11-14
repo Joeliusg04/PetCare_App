@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.model.Post
@@ -19,6 +21,7 @@ class PostsFragment : Fragment() {
     private lateinit var userAdapter: PostsAdapter
     private lateinit var linearLayoutManager: RecyclerView.LayoutManager
     lateinit var binding: FragmentPostsBinding
+    val email= arguments?.getString("email")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
@@ -48,7 +51,7 @@ class PostsFragment : Fragment() {
     private fun getUsers(): MutableList<Post>{
         val users = mutableListOf<Post>()
         users.add(Post(1, User(1,"","","","","","",""), User(1,"","","","","","",""),
-            listOf<User>(),"1 Pastor aleman","","","Paseo","16:00-19:00","24/11/2023","5€","Barcelona",))
+            listOf<User>(),"$email","","","Paseo","16:00-19:00","24/11/2023","5€","Barcelona",))
         users.add(Post(1, User(1,"","","","","","",""), User(1,"","","","","","",""),
             listOf<User>(),"2 Bulldogs","","","Paseo","07:00-10:00","26/11/2023","5€","Cádiz",))
         users.add(Post(1, User(1,"","","","","","",""), User(1,"","","","","","",""),
@@ -64,7 +67,5 @@ class PostsFragment : Fragment() {
 
         return users
     }
-
-
 
 }

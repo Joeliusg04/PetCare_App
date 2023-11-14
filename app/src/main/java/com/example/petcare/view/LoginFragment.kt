@@ -20,6 +20,7 @@ class LoginFragment : Fragment() {
 
     lateinit var binding: FragmentLoginBinding
     lateinit var myPreferences: SharedPreferences
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,11 +34,10 @@ class LoginFragment : Fragment() {
         binding.signup.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
         }
-        myPreferences =
-            requireActivity().getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
+
+        firebaseAuth = FirebaseAuth.getInstance()
 
         binding.continuar.setOnClickListener{
-            findNavController().navigate(R.id.action_loginFragment_to_postsFragment)
             if (binding.rememberCheckbox.isChecked){
                 println("Bienvenido")
                 myPreferences.edit {
@@ -45,21 +45,34 @@ class LoginFragment : Fragment() {
                     putString("password", binding.password.editText?.text.toString())
                 }
             }
-            FirebaseAuth.getInstance().
-            signInWithEmailAndPassword(binding.nickname.editText?.text.toString(), binding.password.editText?.text.toString())
-                .addOnCompleteListener {
-                    if(it.isSuccessful){
-                        val emailLogged = it.result?.user?.email
-                        val action = LoginFragmentDirections.actionLoginFragmentToPostsFragment(emailLogged!!)
+
+            val email = binding.nickname.editText?.text.toString()
+            val pass = binding.password.editText?.text.toString()
+
+            if (email.isNotEmpty() && pass.isNotEmpty()) {
+
+                firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        Toast.makeText(requireContext(), "Bienvenido", Toast.LENGTH_SHORT)
+                            .show()
+                        val action= LoginFragmentDirections.actionLoginFragmentToPostsFragment(email)
                         findNavController().navigate(action)
-                    }
-                    else{
-                        Toast.makeText(requireContext(),"Correo electrónico o contraseña incorrecta, vuelvelo a intentor",Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(requireContext(), "Error con el email o contraseña, vuelvelo a intentar", Toast.LENGTH_SHORT)
+                            .show()
+
                     }
                 }
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    "Has dejado espacios vacios, rellenalos todos",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+            }
 
         }
-
 
     }
 
@@ -74,6 +87,5 @@ class LoginFragment : Fragment() {
         val supportActionBar: ActionBar? = (requireActivity() as AppCompatActivity).supportActionBar
         if (supportActionBar != null) supportActionBar.show()
     }
-
 
 }
