@@ -48,7 +48,7 @@ class LoginFragment : Fragment() {
                 .addOnCompleteListener {
                     if(it.isSuccessful){
                         val emailLogged = it.result?.user?.email
-                        val action = LoginFragmentDirections.actionLoginFragmentToPostsFragment(emailLogged!!)
+                        val action = LoginFragmentDirections.actionLoginFragmentToPostsFragment()
                         findNavController().navigate(action)
                     }
                     else{

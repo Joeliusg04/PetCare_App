@@ -42,7 +42,7 @@ class SignupFragment : Fragment() {
                         db.collection("users").document(emailLogged!!)
                             .set(hashMapOf("name" to binding.nickname.editText.toString()))
 
-                        val action = SignupFragmentDirections.actionSignupFragmentToPostsFragment(emailLogged)
+                        val action = SignupFragmentDirections.actionSignupFragmentToPostsFragment()
                         findNavController().navigate(action)
                     } else {
                         Toast.makeText(requireContext(), "User registration error", Toast.LENGTH_SHORT).show()
