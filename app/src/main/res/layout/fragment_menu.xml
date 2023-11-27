@@ -94,9 +94,22 @@
         android:background="@color/sec1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Log Out"
+        android:text="Cerrar sesión"
         android:textColor="#F44336"
         app:layout_constraintTop_toBottomOf="@id/text3"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.75" />
+
+        <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/deleteAccount"
+        android:background="@color/sec1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Eliminar cuenta"
+        android:textColor="#F44336"
+        app:layout_constraintTop_toBottomOf="@id/logout"
         android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
