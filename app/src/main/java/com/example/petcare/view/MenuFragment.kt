@@ -21,6 +21,11 @@ class MenuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        showAndHide()
+
+    }
+
+    fun showAndHide(){
         binding.myservice.setOnClickListener{
             if (binding.text1.visibility == View.GONE){
                 binding.text1.visibility=View.VISIBLE
@@ -39,7 +44,6 @@ class MenuFragment : Fragment() {
             }
             else binding.text3.visibility=View.GONE
         }
-
     }
 
 }
