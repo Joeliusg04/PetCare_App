@@ -73,4 +73,12 @@ class PostsFragment : Fragment(), OnClickListener {
         TODO("Not yet implemented")
     }
 
+    override fun onResume() {
+        super.onResume()
+        val supportActionBar: ActionBar? = (requireActivity() as AppCompatActivity).supportActionBar
+        if (supportActionBar != null) supportActionBar.hide()
+    }
+
+
+
 }

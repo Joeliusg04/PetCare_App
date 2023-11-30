@@ -84,10 +84,6 @@ class SignupFragment : Fragment() {
         if (supportActionBar != null) supportActionBar.hide()
     }
 
-    override fun onStop() {
-        super.onStop()
-        val supportActionBar: ActionBar? = (requireActivity() as AppCompatActivity).supportActionBar
-        if (supportActionBar != null) supportActionBar.show()
-    }
+  
 
 }

@@ -85,4 +85,12 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.0")
 
+
+    implementation ("androidx.camera:camera-core:1.1.0-beta02")
+    implementation ("androidx.camera:camera-camera2:1.1.0-beta02")
+    implementation ("androidx.camera:camera-lifecycle:1.1.0-beta02")
+    implementation ("androidx.camera:camera-view:1.1.0-beta02")
+    implementation ("androidx.camera:camera-extensions:1.1.0-beta02")
+
+
 }
