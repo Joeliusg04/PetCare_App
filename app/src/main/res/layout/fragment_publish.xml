@@ -23,7 +23,6 @@
         android:id="@+id/publish_slide_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintHeight_percent="0.95"
         app:layout_constraintTop_toTopOf="@id/scroll"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
