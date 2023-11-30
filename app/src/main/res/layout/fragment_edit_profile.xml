@@ -6,19 +6,31 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     tools:context=".view.EditProfileFragment">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/edit_slide_container"
+    <ScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
         app:layout_constraintHeight_percent="0.95"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@color/sec1"
-        android:padding="20dp">
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/edit_slide_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/scroll"
+            app:layout_constraintTop_toTopOf="@id/scroll"
+            android:background="@color/sec1"
+            android:padding="15dp"
+            android:paddingBottom="0dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/userImg"
@@ -44,6 +56,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Cambiar Imagen"
+            android:layout_margin="20dp"
             android:textColor="@color/white"
             android:background="@color/principal"
             app:layout_constraintBottom_toTopOf="@id/name"
@@ -59,6 +72,7 @@
             app:layout_constraintWidth_percent="0.75"
             android:layout_height="wrap_content"
             android:hint="Nombre"
+            android:layout_margin="20dp"
             android:textColorHint="@color/white"
             app:errorEnabled="false"
             app:boxBackgroundColor="@color/principal"
@@ -80,6 +94,7 @@
             app:layout_constraintWidth_percent="0.75"
             android:layout_height="wrap_content"
             android:hint="Edad"
+            android:layout_margin="20dp"
             android:textColorHint="@color/white"
             app:boxBackgroundColor="@color/principal"
             app:errorEnabled="false"
@@ -102,6 +117,7 @@
             app:layout_constraintWidth_percent="0.75"
             android:layout_height="wrap_content"
             android:hint="Correo electronico"
+            android:layout_margin="20dp"
             android:textColorHint="@color/white"
             app:errorEnabled="false"
             app:boxBackgroundColor="@color/principal"
@@ -113,7 +129,6 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
                 android:singleLine="true" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -123,10 +138,11 @@
             app:layout_constraintWidth_percent="0.75"
             android:layout_height="wrap_content"
             android:hint="Telefono"
+            android:layout_margin="20dp"
             android:textColorHint="@color/white"
             app:errorEnabled="false"
             app:boxBackgroundColor="@color/principal"
-            app:layout_constraintBottom_toTopOf="@id/confirm_button"
+            app:layout_constraintBottom_toTopOf="@id/aboutMe"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/email">
@@ -134,8 +150,29 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
+                android:inputType="phone"
                 android:singleLine="true" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/aboutMe"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.75"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:hint="Sobre mi"
+            android:textColorHint="@color/white"
+            app:errorEnabled="false"
+            app:boxBackgroundColor="@color/principal"
+            app:layout_constraintBottom_toTopOf="@id/confirm_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/telefono">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -144,15 +181,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Confirmar"
+            android:layout_margin="20dp"
             android:textColor="@color/white"
             android:background="@color/principal"
             app:layout_constraintBottom_toBottomOf="@id/edit_slide_container"
             app:layout_constraintStart_toStartOf="@id/edit_slide_container"
-            app:layout_constraintTop_toBottomOf="@id/telefono"
+            app:layout_constraintTop_toBottomOf="@id/aboutMe"
             app:layout_constraintEnd_toEndOf="@id/edit_slide_container"
             app:layout_constraintWidth_percent="0.75" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
