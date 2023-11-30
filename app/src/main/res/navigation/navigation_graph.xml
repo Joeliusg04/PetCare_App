@@ -25,9 +25,6 @@
             android:id="@+id/action_signupFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
         <action
-            android:id="@+id/action_signupFragment_to_loginFragment2"
-            app:destination="@id/loginFragment" />
-        <action
             android:id="@+id/action_signupFragment_to_postsFragment"
             app:destination="@id/postsFragment" />
     </fragment>
@@ -43,11 +40,19 @@
     <fragment
         android:id="@+id/menuFragment"
         android:name="com.example.petcare.view.MenuFragment"
-        tools:layout="@layout/fragment_menu" />
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_menuFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/postsFragment"
         android:name="com.example.petcare.view.PostsFragment"
-        tools:layout="@layout/fragment_posts" />
+        tools:layout="@layout/fragment_posts" >
+        <argument
+            android:name="email"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.petcare.view.ProfileFragment"

@@ -11,7 +11,7 @@ data class User(
     var name: String,
     var age: String? = null,
     var profilePhoto: String? = null,
-    var mail: String? = null,
+    var email: String? = null,
     var aboutMe: String? = null,
     /*
     var rating: List<Rating>,

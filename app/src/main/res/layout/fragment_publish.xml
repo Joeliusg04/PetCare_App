@@ -88,6 +88,11 @@
             app:layout_constraintBottom_toTopOf="@id/guia3"
             android:background="@color/background"
             />
+        <androidx.camera.view.PreviewView
+            android:id="@+id/viewFinder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
         <TextView
             android:id="@+id/guia3"
             android:layout_width="match_parent"

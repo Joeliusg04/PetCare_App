@@ -40,12 +40,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/edit_slide_container"
             app:layout_constraintBottom_toTopOf="@id/confirm_edit"
+            android:focusable="false"
+            android:clickable="false"
             app:cardCornerRadius="50dp">
 
             <ImageView
                 android:id="@+id/userImage"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:focusable="false"
+                android:clickable="false"
                 android:src="@drawable/ic_launcher_background"
                 android:scaleType="centerCrop"
                 />
