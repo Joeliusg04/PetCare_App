@@ -28,9 +28,17 @@ class EditProfileFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
         binding.confirmButton.setOnClickListener {
-            findNavController().navigate(R.id.action_editProfileFragment_to_profileFragment)
+            val name= binding.name.editText?.text.toString()
+            val age= binding.age.editText?.text.toString()
+            val tel= binding.telefono.editText?.text.toString()
+            val aboutMe= binding.aboutMe.editText?.text.toString()
+            val img= uri.toString()
+            val action = EditProfileFragmentDirections.actionEditProfileFragmentToProfileFragment(name,age,tel,aboutMe,img,true)
+            findNavController().navigate(action)
+
         }
         binding.confirmEdit.setOnClickListener {
             openGalleryForImages()
