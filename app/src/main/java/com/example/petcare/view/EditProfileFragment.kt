@@ -28,15 +28,34 @@ class EditProfileFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         super.onViewCreated(view, savedInstanceState)
+
+        val actName= arguments?.getString("name").toString()
+        val actAge = arguments?.getString("age").toString()
+        val actPhone = arguments?.getString("phone").toString()
+        val actAboutMe= arguments?.getString("aboutMe").toString()
+
         binding.confirmButton.setOnClickListener {
-            val name= binding.name.editText?.text.toString()
-            val age= binding.age.editText?.text.toString()
-            val tel= binding.telefono.editText?.text.toString()
-            val aboutMe= binding.aboutMe.editText?.text.toString()
-            val img= uri.toString()
-            val action = EditProfileFragmentDirections.actionEditProfileFragmentToProfileFragment(name,age,tel,aboutMe,img,true)
+            val newName= binding.name.editText?.text.toString()
+            val newAge= binding.age.editText?.text.toString()
+            val newPhone= binding.telefono.editText?.text.toString()
+            val newAboutMe= binding.aboutMe.editText?.text.toString()
+
+            var name=""
+            var age=""
+            var phone=""
+            var aboutMe=""
+
+            if(newName=="") name= actName
+            else name=newName
+            if(newAge=="") age= actAge
+            else age=newAge
+            if(newPhone=="") phone= actPhone
+            else phone=newPhone
+            if(newAboutMe=="") aboutMe= actAboutMe
+            else aboutMe=newAboutMe
+
+            val action = EditProfileFragmentDirections.actionEditProfileFragmentToProfileFragment(name,age,phone,aboutMe,true)
             findNavController().navigate(action)
 
         }

@@ -88,10 +88,8 @@
             app:layout_constraintBottom_toTopOf="@id/guia3"
             android:background="@color/background"
             />
-        <androidx.camera.view.PreviewView
-            android:id="@+id/viewFinder"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+
+
 
         <TextView
             android:id="@+id/guia3"
@@ -109,7 +107,6 @@
             android:id="@+id/desctipcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:errorEnabled="false"
             android:layout_marginBottom="15dp"
             android:layout_marginTop="15dp"
             app:boxBackgroundColor="@color/background"
@@ -117,11 +114,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/guia3"
+            app:errorEnabled="true"
+            app:counterMaxLength="500"
+            app:counterEnabled="true"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLength="500"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 

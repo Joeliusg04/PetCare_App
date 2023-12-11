@@ -26,10 +26,16 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var nav=false
+        var nav: Boolean
         binding.editButton.setOnClickListener{
             nav=false
-            findNavController().navigate(R.id.action_profileFragment_to_editProfileFragment)
+            val name=binding.nombre.text.toString()
+            val age=binding.edad.text.toString()
+            val phone=binding.telefono.text.toString()
+            val aboutMe=binding.aboutme.text.toString()
+
+            val action = ProfileFragmentDirections.actionProfileFragmentToEditProfileFragment(name,age,phone,aboutMe)
+            findNavController().navigate(action)
         }
         nav= arguments?.getBoolean("nav") == true
         if (nav){
@@ -37,8 +43,6 @@ class ProfileFragment : Fragment() {
             binding.edad.text = arguments?.getString("age")
             binding.telefono.text = arguments?.getString("phone")
             binding.aboutme.text = arguments?.getString("aboutMe")
-            binding.userImage.setImageURI(arguments?.getString("photo")!!.toUri())
-
         }
 
 
