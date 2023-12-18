@@ -63,6 +63,21 @@
         <action
             android:id="@+id/action_profileFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="age"
+            app:argType="string" />
+        <argument
+            android:name="phone"
+            app:argType="string" />
+        <argument
+            android:name="aboutMe"
+            app:argType="string" />
+        <argument
+            android:name="nav"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/publishFragment"
@@ -75,6 +90,17 @@
         <action
             android:id="@+id/action_editProfileFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <argument android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="age"
+            app:argType="string" />
+        <argument
+            android:name="phone"
+            app:argType="string" />
+        <argument
+            android:name="aboutMe"
+            app:argType="string" />
     </fragment>
 
 </navigation>

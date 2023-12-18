@@ -105,38 +105,19 @@
             app:layout_constraintTop_toBottomOf="@id/name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/email">
+            app:layout_constraintBottom_toTopOf="@id/telefono">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:maxLength="2"
                 android:singleLine="true" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/email"
-            android:layout_width="0dp"
-            app:layout_constraintWidth_percent="0.75"
-            android:layout_height="wrap_content"
-            android:hint="Correo electronico"
-            android:layout_margin="20dp"
-            android:textColorHint="@color/white"
-            app:errorEnabled="false"
-            app:boxBackgroundColor="@color/principal"
-            app:layout_constraintBottom_toTopOf="@id/telefono"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/age">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:singleLine="true" />
 
-        </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/telefono"
             android:layout_width="0dp"
@@ -150,7 +131,7 @@
             app:layout_constraintBottom_toTopOf="@id/aboutMe"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/email">
+            app:layout_constraintTop_toBottomOf="@id/age">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -169,8 +150,8 @@
             android:hint="Sobre mi"
             android:textColorHint="@color/white"
             app:errorEnabled="true"
-            app:counterEnabled="true"
             app:counterMaxLength="500"
+            app:counterEnabled="true"
             app:boxBackgroundColor="@color/principal"
             app:layout_constraintBottom_toTopOf="@id/confirm_button"
             app:layout_constraintEnd_toEndOf="parent"
