@@ -8,7 +8,6 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.petcare.view.LoginFragment"
-        android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_signupFragment"
@@ -20,13 +19,10 @@
     <fragment
         android:id="@+id/signupFragment"
         android:name="com.example.petcare.view.SignupFragment"
-        android:label="fragment_signup"
+
         tools:layout="@layout/fragment_signup" >
         <action
             android:id="@+id/action_signupFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_signupFragment_to_loginFragment2"
             app:destination="@id/loginFragment" />
         <action
             android:id="@+id/action_signupFragment_to_postsFragment"
@@ -35,7 +31,7 @@
     <fragment
         android:id="@+id/launchFragment"
         android:name="com.example.petcare.view.LaunchFragment"
-        android:label="fragment_launch"
+
         tools:layout="@layout/fragment_launch" >
         <action
             android:id="@+id/action_launchFragment_to_loginFragment"
@@ -44,12 +40,17 @@
     <fragment
         android:id="@+id/menuFragment"
         android:name="com.example.petcare.view.MenuFragment"
-        android:label="fragment_menu"
-        tools:layout="@layout/fragment_menu" />
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_menuFragment_to_loginFragment2"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/postsFragment"
         android:name="com.example.petcare.view.PostsFragment"
-        android:label="fragment_posts"
         tools:layout="@layout/fragment_posts" >
         <argument
             android:name="email"
@@ -58,25 +59,48 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.petcare.view.ProfileFragment"
-        android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
             android:id="@+id/action_profileFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="age"
+            app:argType="string" />
+        <argument
+            android:name="phone"
+            app:argType="string" />
+        <argument
+            android:name="aboutMe"
+            app:argType="string" />
+        <argument
+            android:name="nav"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/publishFragment"
         android:name="com.example.petcare.view.PublishFragment"
-        android:label="fragment_publish"
         tools:layout="@layout/fragment_publish" />
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="com.example.petcare.view.EditProfileFragment"
-        android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" >
         <action
             android:id="@+id/action_editProfileFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <argument android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="age"
+            app:argType="string" />
+        <argument
+            android:name="phone"
+            app:argType="string" />
+        <argument
+            android:name="aboutMe"
+            app:argType="string" />
     </fragment>
 
 </navigation>

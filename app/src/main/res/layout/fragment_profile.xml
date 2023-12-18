@@ -167,8 +167,8 @@
             android:id="@+id/aboutme"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="About Me"
-            />
+            android:textSize="16dp"
+            android:text="About me" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

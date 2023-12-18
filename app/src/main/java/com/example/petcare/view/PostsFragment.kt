@@ -7,18 +7,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.model.Post
 import com.example.model.User
 import com.example.petcare.databinding.FragmentPostsBinding
-import com.example.petcare.view.MainActivity
+import com.example.petcare.viewmodel.OnClickListener
 import com.example.petcare.viewmodel.PostsAdapter
 
-class PostsFragment : Fragment() {
+class PostsFragment : Fragment(), OnClickListener {
     private lateinit var userAdapter: PostsAdapter
     private lateinit var linearLayoutManager: RecyclerView.LayoutManager
     lateinit var binding: FragmentPostsBinding
+    val email= arguments?.getString("email")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
@@ -33,7 +36,7 @@ class PostsFragment : Fragment() {
         val activity = requireActivity() as MainActivity
         activity.setBottomNavigationVisible(true)
 
-        userAdapter = PostsAdapter(getUsers())
+        userAdapter = PostsAdapter(getUsers(), this)
         linearLayoutManager = LinearLayoutManager(context)
 
         binding.recyclerView.apply {
@@ -48,7 +51,7 @@ class PostsFragment : Fragment() {
     private fun getUsers(): MutableList<Post>{
         val users = mutableListOf<Post>()
         users.add(Post(1, User(1,"","","","","","",""), User(1,"","","","","","",""),
-            listOf<User>(),"1 Pastor aleman","","","Paseo","16:00-19:00","24/11/2023","5€","Barcelona",))
+            listOf<User>(),"$email","","","Paseo","16:00-19:00","24/11/2023","5€","Barcelona",))
         users.add(Post(1, User(1,"","","","","","",""), User(1,"","","","","","",""),
             listOf<User>(),"2 Bulldogs","","","Paseo","07:00-10:00","26/11/2023","5€","Cádiz",))
         users.add(Post(1, User(1,"","","","","","",""), User(1,"","","","","","",""),
@@ -63,6 +66,16 @@ class PostsFragment : Fragment() {
             listOf<User>(),"1 Conejo","","","Cuidado","17:00-20:00","10/01/2024","5€","Málaga",))
 
         return users
+    }
+
+    override fun onClick(post: Post) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val supportActionBar: ActionBar? = (requireActivity() as AppCompatActivity).supportActionBar
+        if (supportActionBar != null) supportActionBar.hide()
     }
 
 

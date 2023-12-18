@@ -7,37 +7,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.fragment.findNavController
 import com.example.petcare.R
-import com.example.petcare.databinding.FragmentLaunchBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import com.example.petcare.databinding.FragmentPostDetailBinding
 
 
-class LaunchFragment : Fragment() {
-    lateinit var binding: FragmentLaunchBinding
-
+class PostDetailFragment : Fragment() {
+    lateinit var binding: FragmentPostDetailBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
-        binding=FragmentLaunchBinding.inflate(layoutInflater)
+       binding= FragmentPostDetailBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        val activity = requireActivity() as MainActivity
-//        activity.setBottomNavigationVisible(false)
 
-        CoroutineScope(Dispatchers.IO).launch {
-            delay(2500L)
-            withContext(Dispatchers.Main) {
-                findNavController().navigate(R.id.action_launchFragment_to_loginFragment)
-            }
-        }
+
     }
 
     override fun onResume() {
@@ -51,6 +37,5 @@ class LaunchFragment : Fragment() {
         val supportActionBar: ActionBar? = (requireActivity() as AppCompatActivity).supportActionBar
         if (supportActionBar != null) supportActionBar.show()
     }
-
 
 }
