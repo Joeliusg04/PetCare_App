@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.model.Post
 import com.example.model.User
 import com.example.petcare.databinding.FragmentPostsBinding
-import com.example.petcare.view.MainActivity
 import com.example.petcare.viewmodel.OnClickListener
 import com.example.petcare.viewmodel.PostsAdapter
 
