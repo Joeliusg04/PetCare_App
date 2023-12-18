@@ -110,7 +110,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
+                android:maxLength="2"
                 android:singleLine="true" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -133,6 +133,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
                 android:singleLine="true" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -155,6 +156,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
+                android:maxLength="9"
                 android:singleLine="true" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -166,7 +168,9 @@
             android:layout_margin="20dp"
             android:hint="Sobre mi"
             android:textColorHint="@color/white"
-            app:errorEnabled="false"
+            app:errorEnabled="true"
+            app:counterEnabled="true"
+            app:counterMaxLength="500"
             app:boxBackgroundColor="@color/principal"
             app:layout_constraintBottom_toTopOf="@id/confirm_button"
             app:layout_constraintEnd_toEndOf="parent"
@@ -176,6 +180,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLength="500"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>

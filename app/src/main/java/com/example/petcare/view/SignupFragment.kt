@@ -48,7 +48,7 @@ class SignupFragment : Fragment() {
                         if (it.isSuccessful) {
                             Toast.makeText(
                                 requireContext(),
-                                "Usuario creado con exito!",
+                                "Usuario creado con exito!\nBienvenido ${name.capitalize()}",
                                 Toast.LENGTH_SHORT
                             )
                                 .show()

@@ -35,14 +35,30 @@ class LoginFragment : Fragment() {
         myPreferences = requireActivity().getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
         firebaseAuth = FirebaseAuth.getInstance()
 
-        // Recuperar datos si "Recordar inicio de sesión" está marcado
-        if (myPreferences.contains("email") && myPreferences.contains("password")) {
-            findNavController().navigate(R.id.action_loginFragment_to_postsFragment)
-        }
-
         binding.signup.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
         }
+
+        /*
+
+        //Recuperar datos si "Recordar inicio de sesión" está marcado
+        if (myPreferences.contains("email") && myPreferences.contains("password")) {
+            val email = myPreferences.getString("email", "")
+            val pass = myPreferences.getString("password", "")
+            if (!email.isNullOrEmpty() && !pass.isNullOrEmpty()) {
+                // Autenticar al usuario con los datos almacenados
+                firebaseAuth.signInWithEmailAndPassword(email, pass)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            // Si la autenticación es exitosa, navegar a la siguiente pantalla
+                            val action = LoginFragmentDirections.actionLoginFragmentToPostsFragment(email)
+                            findNavController().navigate(action)
+                        }
+                    }
+            }
+        }
+
+         */
 
         binding.continuar.setOnClickListener {
             val email = binding.nickname.editText?.text.toString()
