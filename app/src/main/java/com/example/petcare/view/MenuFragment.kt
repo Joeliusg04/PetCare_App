@@ -87,18 +87,25 @@ class MenuFragment : Fragment() {
         binding.myservice.setOnClickListener{
             if (binding.text1.visibility == View.GONE){
                 binding.text1.visibility=View.VISIBLE
+                binding.text2.visibility=View.GONE
+                binding.text3.visibility=View.GONE
+
             }
             else binding.text1.visibility=View.GONE
         }
         binding.servicedone.setOnClickListener{
             if (binding.text2.visibility == View.GONE){
                 binding.text2.visibility=View.VISIBLE
+                binding.text1.visibility=View.GONE
+                binding.text3.visibility=View.GONE
             }
             else binding.text2.visibility=View.GONE
         }
         binding.complain.setOnClickListener{
             if (binding.text3.visibility == View.GONE){
                 binding.text3.visibility=View.VISIBLE
+                binding.text2.visibility=View.GONE
+                binding.text1.visibility=View.GONE
             }
             else binding.text3.visibility=View.GONE
         }
