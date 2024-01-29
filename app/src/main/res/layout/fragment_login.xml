@@ -80,12 +80,12 @@
             app:layout_constraintStart_toStartOf="@id/password"
             app:layout_constraintTop_toBottomOf="@id/password" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/continuar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:background="@color/principal"
+            android:backgroundTint="@color/principal"
             android:text="Continuar"
             android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@id/guideline2"

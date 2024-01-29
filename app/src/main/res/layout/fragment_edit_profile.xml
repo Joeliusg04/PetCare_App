@@ -55,14 +55,14 @@
                 />
         </androidx.cardview.widget.CardView>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/confirm_edit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Cambiar Imagen"
             android:layout_margin="20dp"
             android:textColor="@color/white"
-            android:background="@color/principal"
+            android:backgroundTint="@color/principal"
             app:layout_constraintBottom_toTopOf="@id/name"
             app:layout_constraintStart_toStartOf="@id/edit_slide_container"
             app:layout_constraintTop_toBottomOf="@id/userImg"
@@ -166,14 +166,14 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/confirm_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Confirmar"
             android:layout_margin="20dp"
             android:textColor="@color/white"
-            android:background="@color/principal"
+            android:backgroundTint="@color/principal"
             app:layout_constraintBottom_toBottomOf="@id/edit_slide_container"
             app:layout_constraintStart_toStartOf="@id/edit_slide_container"
             app:layout_constraintTop_toBottomOf="@id/aboutMe"

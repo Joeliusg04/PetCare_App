@@ -7,16 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import com.example.petcare.R
-import com.example.petcare.databinding.FragmentPostDetailBinding
+import com.example.petcare.databinding.FragmentDetailsPostBinding
 
 
-class PostDetailFragment : Fragment() {
-    lateinit var binding: FragmentPostDetailBinding
+class DetailsPostFragment : Fragment() {
+    lateinit var binding: FragmentDetailsPostBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
-       binding= FragmentPostDetailBinding.inflate(layoutInflater)
+        binding= FragmentDetailsPostBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -37,5 +36,6 @@ class PostDetailFragment : Fragment() {
         val supportActionBar: ActionBar? = (requireActivity() as AppCompatActivity).supportActionBar
         if (supportActionBar != null) supportActionBar.show()
     }
+
 
 }
