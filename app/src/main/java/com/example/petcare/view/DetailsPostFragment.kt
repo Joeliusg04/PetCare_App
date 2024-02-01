@@ -28,7 +28,7 @@ class DetailsPostFragment : Fragment() {
         binding.servicio.text= arguments?.getString("service")
         binding.fecha.text= arguments?.getString("date")
         val reward=arguments?.getString("reward")
-        binding.solicitar.text= "Solicitar servivio: $reward"
+        binding.solicitar.text= "Solicitar servicio: $reward"
 
     }
 
