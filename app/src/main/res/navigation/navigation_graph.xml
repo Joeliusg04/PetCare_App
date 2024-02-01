@@ -55,6 +55,9 @@
         <argument
             android:name="email"
             app:argType="string" />
+        <action
+            android:id="@+id/action_postsFragment_to_detailsPostFragment"
+            app:destination="@id/detailsPostFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -100,6 +103,28 @@
             app:argType="string" />
         <argument
             android:name="aboutMe"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsPostFragment"
+        android:name="com.example.petcare.view.DetailsPostFragment"
+        android:label="fragment_details_post"
+        tools:layout="@layout/fragment_details_post" >
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="desc"
+            app:argType="string" />
+        <argument
+            android:name="locate"
+            app:argType="string" />
+        <argument android:name="service"
+            app:argType="string" />
+        <argument android:name="date"
+            app:argType="string" />
+        <argument
+            android:name="reward"
             app:argType="string" />
     </fragment>
 

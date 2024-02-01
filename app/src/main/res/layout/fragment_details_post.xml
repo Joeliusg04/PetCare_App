@@ -42,7 +42,7 @@
             app:layout_constraintTop_toTopOf="@id/detail_slide_container"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/guia1"
+            app:layout_constraintBottom_toTopOf="@id/chat"
             android:background="@color/background"
             android:padding="15dp"
             android:paddingBottom="0dp">
@@ -73,6 +73,9 @@
                app:layout_constraintTop_toBottomOf="@id/image"
                 app:layout_constraintBottom_toTopOf="@id/desctipcion"
                 android:text="Anima y raza"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_marginBottom="15dp"
                 />
             <TextView
@@ -85,6 +88,9 @@
                 app:layout_constraintTop_toBottomOf="@id/tittle"
                 app:layout_constraintBottom_toTopOf="@+id/localidad"
                 android:text="Descripción"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_marginBottom="15dp"
                 />
             <TextView
@@ -97,6 +103,9 @@
                 app:layout_constraintTop_toBottomOf="@id/desctipcion"
                 app:layout_constraintBottom_toTopOf="@+id/servicio"
                 android:text="Localidad"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_marginBottom="15dp"
                 />
             <TextView
@@ -109,6 +118,9 @@
                 app:layout_constraintTop_toBottomOf="@id/localidad"
                 app:layout_constraintBottom_toTopOf="@+id/fecha"
                 android:text="Servicio"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_marginBottom="15dp"
                 />
             <TextView
@@ -121,6 +133,9 @@
                 app:layout_constraintTop_toBottomOf="@id/servicio"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:text="Fecha"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_marginBottom="15dp"
                 />
 

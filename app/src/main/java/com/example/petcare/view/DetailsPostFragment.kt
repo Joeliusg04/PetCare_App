@@ -22,6 +22,13 @@ class DetailsPostFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.tittle.text= arguments?.getString("name")
+        binding.desctipcion.text= arguments?.getString("desc")
+        binding.localidad.text= arguments?.getString("locate")
+        binding.servicio.text= arguments?.getString("service")
+        binding.fecha.text= arguments?.getString("date")
+        val reward=arguments?.getString("reward")
+        binding.solicitar.text= "Solicitar servivio: $reward"
 
     }
 
