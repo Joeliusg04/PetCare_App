@@ -126,6 +126,9 @@
         <argument
             android:name="reward"
             app:argType="string" />
+        <argument
+            android:name="time"
+            app:argType="string" />
     </fragment>
 
 </navigation>

@@ -76,7 +76,8 @@ class PostsFragment : Fragment(), OnClickListener {
         val service= post.serviceType
         val date= post.postDate
         val reward= post.reward
-        val action = PostsFragmentDirections.actionPostsFragmentToDetailsPostFragment(name,desc,locate,service,date,reward)
+        val time=post.serviceTime
+        val action = PostsFragmentDirections.actionPostsFragmentToDetailsPostFragment(name,desc,locate,service,date,reward,time)
         findNavController().navigate(action)
     }
 
