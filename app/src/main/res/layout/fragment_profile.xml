@@ -61,6 +61,7 @@
             android:textSize="15dp"
             android:textStyle="bold"
             android:text="Nombre: "
+            android:textColor="@color/black"
             />
         <TextView
             android:id="@+id/nombre"
@@ -71,6 +72,7 @@
             app:layout_constraintBottom_toTopOf="@id/edad"
             android:textSize="15dp"
             android:text="Manolo Lama"
+            android:textColor="@color/black"
             />
         <TextView
             android:id="@+id/edadGuia"
@@ -82,6 +84,7 @@
             android:textSize="15dp"
             android:textStyle="bold"
             android:text="Edad: "
+            android:textColor="@color/black"
             />
         <TextView
             android:id="@+id/edad"
@@ -92,6 +95,7 @@
             app:layout_constraintBottom_toTopOf="@id/correoElectronico"
             android:textSize="15dp"
             android:text="54"
+            android:textColor="@color/black"
             />
         <TextView
             android:id="@+id/correoElectronicoGuia"
@@ -103,6 +107,7 @@
             android:textSize="15dp"
             android:textStyle="bold"
             android:text="Correo Electronico: "
+            android:textColor="@color/black"
             />
         <TextView
             android:id="@+id/correoElectronico"
@@ -113,6 +118,7 @@
             app:layout_constraintBottom_toTopOf="@id/telefono"
             android:textSize="15dp"
             android:text="manoloLama69@gmail.com"
+            android:textColor="@color/black"
             />
         <TextView
             android:id="@+id/telefonoGuia"
@@ -124,6 +130,7 @@
             android:textSize="15dp"
             android:textStyle="bold"
             android:text="Telefono: "
+            android:textColor="@color/black"
             />
         <TextView
             android:id="@+id/telefono"
@@ -134,6 +141,7 @@
             app:layout_constraintBottom_toBottomOf="@id/profile_slide_container"
             android:textSize="15dp"
             android:text="123456789"
+            android:textColor="@color/black"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -168,7 +176,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="16dp"
-            android:text="About me" />
+            android:text="About me"
+            android:textColor="@color/black"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

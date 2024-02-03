@@ -58,7 +58,7 @@ class PostsFragment : Fragment(), OnClickListener {
         users.add(Post(1, User(1,"","","","","","",""), User(1,"","","","","","",""),
             listOf<User>(),"1 Gato persa","","El gato persa es conocido por su pelaje largo y denso, nariz chata y grandes ojos redondos. Tranquilo y cariñoso, requiere cuidados constantes de su pelaje. Ideal como compañero de interior.","Veterinario","20:00-22:00","10/11/2023","5€","Madrid",))
         users.add(Post(1, User(1,"","","","","","",""), User(1,"","","","","","",""),
-            listOf<User>(),"2 Jaskys","","traviesos y leales, siempre listos para jugar. Alegran mi vida con travesuras y lamidas. Amor en patas peludas","Cuidado","08:00-09:00","1/12/2023","5€","Lugo",))
+            listOf<User>(),"2 Huskys","","traviesos y leales, siempre listos para jugar. Alegran mi vida con travesuras y lamidas. Amor en patas peludas","Cuidado","08:00-09:00","1/12/2023","5€","Lugo",))
         users.add(Post(1, User(1,"","","","","","",""), User(1,"","","","","","",""),
             listOf<User>(),"3 Gatos sphynx","","Mis tres Sphynx: Zafiro, traviesa y juguetona; Ónix, elegante y curiosa; y Esmeralda, la mimosa del trío. Peludas emociones en mi hogar sin pelo.","Veterinario","14:00-16:00","12/11/2023","5€","Tarragona",))
         users.add(Post(1, User(1,"","","","","","",""), User(1,"","","","","","",""),
