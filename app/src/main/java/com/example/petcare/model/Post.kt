@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Post(
     var postId: Int,
-    var owner: User?,
+    var owner: User,
     var reciver: User,
     var offers: List<User>,
     var tittle: String,
@@ -18,7 +18,6 @@ data class Post(
     var serviceTime: String,
     var postDate: String,
     var reward: String,
-   // var ubi: Ubi,
     var location: String
 ){
 //    init {

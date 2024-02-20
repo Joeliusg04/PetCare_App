@@ -47,7 +47,7 @@ class SignupFragment : Fragment() {
 
         binding.signup.setOnClickListener {
             if (binding.nickname.editText?.text.toString()!= "" && binding.password.editText?.text.toString() != "" && binding.confPassword.editText?.text.toString() != "" && binding.email.editText?.text.toString() != ""){
-                viewModel.currentUser.value = User(0,binding.nickname.editText?.text.toString(),binding.email.editText?.text.toString()," ",binding.password.editText?.text.toString(),"perfil.png")
+                viewModel.currentUser.value = User(0,binding.nickname.editText?.text.toString(),binding.email.editText?.text.toString()," ","perfil.png",binding.password.editText?.text.toString())
                 viewModel.repository = ApiRepository(binding.nickname.editText?.text.toString(),binding.password.editText?.text.toString())
                 CoroutineScope(Dispatchers.IO).launch {
                     val repository = ApiRepository(binding.nickname.editText?.text.toString(),binding.password.editText?.text.toString())

@@ -9,24 +9,32 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.model.Post
 import com.example.model.User
 import com.example.petcare.databinding.FragmentPostsBinding
+import com.example.petcare.model.Adapter
+import com.example.petcare.viewmodel.MyViewModel
 import com.example.petcare.viewmodel.OnClickListener
-import com.example.petcare.viewmodel.PostsAdapter
+import androidx.appcompat.widget.SearchView.OnQueryTextListener
+
+
 
 class PostsFragment : Fragment(), OnClickListener {
-    private lateinit var userAdapter: PostsAdapter
+    private val viewModel: MyViewModel by activityViewModels()
+    private lateinit var userAdapter: Adapter
     private lateinit var linearLayoutManager: RecyclerView.LayoutManager
     lateinit var binding: FragmentPostsBinding
-    val email= arguments?.getString("email")
+    //val email= arguments?.getString("email")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
        binding= FragmentPostsBinding.inflate(layoutInflater)
+        val activity = requireActivity() as MainActivity
+        activity.setBottomNavigationVisible(true)
         return binding.root
     }
 
@@ -34,10 +42,40 @@ class PostsFragment : Fragment(), OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val activity = requireActivity() as MainActivity
-        activity.setBottomNavigationVisible(true)
+        viewModel.data.observe(viewLifecycleOwner){
+            setUpRecyclerView(it)
+        }
+        binding.search.setOnQueryTextListener(object : OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query != null) {
+                    if (query != "") {
+                        viewModel.name = query
+                        viewModel.fetchPostByName(viewModel.name)
+                        println(viewModel.post.value)
+                    }
+                    else {
+                        viewModel.fetchData()
+                    }
+                }
+                return false
+            }
 
-        userAdapter = PostsAdapter(getUsers(), this)
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    if (newText.length >= 2) {
+                        viewModel.name = newText
+                        viewModel.fetchPostByName(viewModel.name)
+                    }
+                    else {
+                        viewModel.fetchData()
+                    }
+                }
+                return false
+            }
+        })
+
+
+        userAdapter = Adapter(getUsers(), this)
         linearLayoutManager = LinearLayoutManager(context)
 
         binding.recyclerView.apply {
@@ -47,6 +85,16 @@ class PostsFragment : Fragment(), OnClickListener {
         }
 
 
+    }
+
+    fun setUpRecyclerView(listOfUsers: List<Post>){
+        userAdapter = Adapter(listOfUsers , this)
+        linearLayoutManager = LinearLayoutManager(context)
+        binding.recyclerView.apply {
+            setHasFixedSize(true) //Optimitza el rendiment de l’app
+            layoutManager = linearLayoutManager
+            adapter = userAdapter
+        }
     }
     @RequiresApi(Build.VERSION_CODES.O)
     private fun getUsers(): MutableList<Post>{

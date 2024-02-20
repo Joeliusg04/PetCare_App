@@ -85,7 +85,11 @@
     <fragment
         android:id="@+id/publishFragment"
         android:name="com.example.petcare.view.PublishFragment"
-        tools:layout="@layout/fragment_publish" />
+        tools:layout="@layout/fragment_publish" >
+        <action
+            android:id="@+id/action_publishFragment_to_postsFragment"
+            app:destination="@id/postsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="com.example.petcare.view.EditProfileFragment"
