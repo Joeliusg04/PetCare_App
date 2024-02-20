@@ -8,9 +8,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Post(
     var postId: Int,
-    var owner: User,
-    var reciver: User,
-    var offers: List<User>,
+    var owner: Int,
+    var reciver: Int,
+    var offers: String,
     var tittle: String,
     var postPhoto: String,
     var description: String,

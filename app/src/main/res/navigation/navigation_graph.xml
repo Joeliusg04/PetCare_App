@@ -115,24 +115,8 @@
         android:label="fragment_details_post"
         tools:layout="@layout/fragment_details_post" >
         <argument
-            android:name="name"
-            app:argType="string" />
-        <argument
-            android:name="desc"
-            app:argType="string" />
-        <argument
-            android:name="locate"
-            app:argType="string" />
-        <argument android:name="service"
-            app:argType="string" />
-        <argument android:name="date"
-            app:argType="string" />
-        <argument
-            android:name="reward"
-            app:argType="string" />
-        <argument
-            android:name="time"
-            app:argType="string" />
+            android:name="id"
+            app:argType="integer" />
     </fragment>
 
 </navigation>

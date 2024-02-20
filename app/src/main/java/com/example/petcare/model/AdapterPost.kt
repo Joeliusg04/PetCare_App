@@ -17,8 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class Adapter (private var posts: List<Post>, private val listener: com.example.petcare.viewmodel.OnClickListener):
-    RecyclerView.Adapter<Adapter.ViewHolder>() {
+class AdapterPost (private var posts: List<Post>, private val listener: com.example.petcare.viewmodel.OnClickListener):RecyclerView.Adapter<AdapterPost.ViewHolder>() {
     private lateinit var context: Context
     lateinit var repository: ApiRepository
 
@@ -49,6 +48,10 @@ class Adapter (private var posts: List<Post>, private val listener: com.example.
         with(holder){
             setListener(post)
             binding.titleItem.text = post.tittle
+            binding.serviceItem.text = post.serviceType
+            binding.dateItem.text = post.postDate
+            binding.timeItem.text = post.serviceTime
+            binding.locateItem.text = post.location
             CoroutineScope(Dispatchers.IO).launch {
                 val response = repository.getImage("/posts/imagenes/${post.postPhoto}")
                 withContext(Dispatchers.Main){
@@ -63,7 +66,6 @@ class Adapter (private var posts: List<Post>, private val listener: com.example.
                     }
                 }
             }
-
         }
     }
 

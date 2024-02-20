@@ -41,29 +41,31 @@ class PublishFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /*
         binding.publish.setOnClickListener {
-
+            val a = binding.horaInicio.selectedItem.toString()
+            val b = binding.horaFinal.selectedItem.toString()
+            val tiempoDeServivio = "$a - $b"
 
             val post = Post(0,
-                binding.animalYRaza.editText?.text.toString(),
-                binding.newGameName.editText?.text.toString(),
-                binding.spinnerGenero.selectedItem.toString(),
-                binding.multiplayerOrNot.isChecked,
-                binding.spinnerPageweb.selectedItem.toString(),
                 0,
-                false,
+                0,
+                "",
+                binding.animalYRaza.editText?.text.toString(),
+                binding.desctipcion.editText?.text.toString(),
+                binding.tipoDeServicio.selectedItem.toString(),
+                tiempoDeServivio,
+                0,
+                binding.dia.selectedItem.toString(),
                 false,
                 ""
             )
 
             val archivo = getFileFromUri(requireContext(), uri)
 
-            viewModel.addOferta(post, archivo!!)
+            viewModel.addPost(post, archivo!!)
             findNavController().navigate(R.id.action_publishFragment_to_postsFragment)
         }
 
-         */
 
         binding.dia.setOnClickListener {
             showDatePickerDialog()

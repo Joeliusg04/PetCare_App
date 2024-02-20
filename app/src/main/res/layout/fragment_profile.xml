@@ -71,7 +71,7 @@
             app:layout_constraintTop_toBottomOf="@id/userImg"
             app:layout_constraintBottom_toTopOf="@id/edad"
             android:textSize="15dp"
-            android:text="Manolo Lama"
+            android:text="Pablo"
             android:textColor="@color/black"
             />
         <TextView
@@ -94,7 +94,7 @@
             app:layout_constraintTop_toBottomOf="@id/nombre"
             app:layout_constraintBottom_toTopOf="@id/correoElectronico"
             android:textSize="15dp"
-            android:text="54"
+            android:text=""
             android:textColor="@color/black"
             />
         <TextView
@@ -117,7 +117,7 @@
             app:layout_constraintTop_toBottomOf="@id/edad"
             app:layout_constraintBottom_toTopOf="@id/telefono"
             android:textSize="15dp"
-            android:text="manoloLama69@gmail.com"
+            android:text="pablo@gmail.com"
             android:textColor="@color/black"
             />
         <TextView
@@ -140,7 +140,7 @@
             app:layout_constraintTop_toBottomOf="@id/correoElectronico"
             app:layout_constraintBottom_toBottomOf="@id/profile_slide_container"
             android:textSize="15dp"
-            android:text="123456789"
+            android:text=""
             android:textColor="@color/black"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>

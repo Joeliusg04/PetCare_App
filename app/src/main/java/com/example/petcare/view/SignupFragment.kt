@@ -14,8 +14,6 @@ import com.example.model.User
 import com.example.petcare.R
 import com.example.petcare.databinding.FragmentSignupBinding
 import com.example.petcare.viewmodel.MyViewModel
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

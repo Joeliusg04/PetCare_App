@@ -39,7 +39,8 @@ interface ApiInterface {
     ): Response<Boolean>
 
     @GET()
-    suspend fun getPost(@Url url: String): Response<List<Post>>
+    suspend fun getPosts(@Url url: String): Response<List<Post>>
+
     @GET()
     suspend fun getPostByName(@Url url: String): Response<List<Post>>
 

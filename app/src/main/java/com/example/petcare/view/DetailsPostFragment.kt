@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.petcare.databinding.FragmentDetailsPostBinding
+import com.example.petcare.viewmodel.MyViewModel
 
 
 class DetailsPostFragment : Fragment() {
@@ -21,8 +23,12 @@ class DetailsPostFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val viewModel = ViewModelProvider(requireActivity())[MyViewModel::class.java]
+        val id = arguments?.getString("id")?.toInt()
 
-        binding.tittle.text= arguments?.getString("name")
+        val paco = id?.let { viewModel.getPost(it) }
+
+        binding.tittle.text= arguments?.getString("tittle")
         binding.desctipcion.text= arguments?.getString("desc")
         binding.localidad.text= arguments?.getString("locate")
         binding.servicio.text= arguments?.getString("service")
