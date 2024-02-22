@@ -65,7 +65,18 @@ class SignupFragment : Fragment() {
             else{
             Toast.makeText(context, "Has dejado espacios vacíos, rellénalos todos", Toast.LENGTH_SHORT).show()
         }
+            /*
+            val name = ""
+            val age = ""
+            val nickname = binding.nickname.editText?.text.toString()
+            val email = binding.email.editText?.text.toString()
+            val aboutMe = ""
+            val phone = ""
+            val nav = false
+            val action = SignupFragmentDirections.actionSignupFragmentToProfileFragment(name, age, aboutMe, phone, nav,nickname, email)
+            findNavController().navigate(action)
 
+             */
         }
 
 

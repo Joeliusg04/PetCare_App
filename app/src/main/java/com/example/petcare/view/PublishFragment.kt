@@ -45,24 +45,24 @@ class PublishFragment : Fragment() {
             val a = binding.horaInicio.selectedItem.toString()
             val b = binding.horaFinal.selectedItem.toString()
             val tiempoDeServivio = "$a - $b"
+            val archivo = getFileFromUri(requireContext(), uri)
+
 
             val post = Post(0,
                 0,
                 0,
                 "",
                 binding.animalYRaza.editText?.text.toString(),
+                "",
                 binding.desctipcion.editText?.text.toString(),
                 binding.tipoDeServicio.selectedItem.toString(),
                 tiempoDeServivio,
-                0,
-                binding.dia.selectedItem.toString(),
-                false,
-                ""
+                binding.dia.text.toString(),
+                binding.reward.text.toString(),
+                binding.localidad.selectedItem.toString()
             )
 
-            val archivo = getFileFromUri(requireContext(), uri)
-
-            viewModel.addPost(post, archivo!!)
+            //viewModel.addPost(post, archivo!!)
             findNavController().navigate(R.id.action_publishFragment_to_postsFragment)
         }
 

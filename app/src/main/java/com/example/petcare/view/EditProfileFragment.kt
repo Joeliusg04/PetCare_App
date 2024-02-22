@@ -12,14 +12,17 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.petcare.R
 import com.example.petcare.databinding.FragmentEditProfileBinding
+import com.example.petcare.viewmodel.MyViewModel
 import java.io.File
 
 class EditProfileFragment : Fragment() {
     lateinit var binding: FragmentEditProfileBinding
     lateinit var uri: Uri
+    private val viewModel: MyViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
@@ -45,6 +48,8 @@ class EditProfileFragment : Fragment() {
             var age=""
             var phone=""
             var aboutMe=""
+            val nickname = ""
+            val email = ""
 
             if(newName=="") name= actName
             else name=newName
@@ -55,7 +60,7 @@ class EditProfileFragment : Fragment() {
             if(newAboutMe=="") aboutMe= actAboutMe
             else aboutMe=newAboutMe
 
-            val action = EditProfileFragmentDirections.actionEditProfileFragmentToProfileFragment(name,age,phone,aboutMe,true)
+            val action = EditProfileFragmentDirections.actionEditProfileFragmentToProfileFragment(name,age,phone,aboutMe,true, nickname, email)
             findNavController().navigate(action)
 
         }
@@ -82,13 +87,15 @@ class EditProfileFragment : Fragment() {
                 for(i in 0..count!! - 1){
                     var imageUri: Uri = data.clipData?.getItemAt(i)!!.uri
                     image.setImageURI(imageUri)
-                    uri = imageUri
+                    // Almacena la URI en el ViewModel
+                    viewModel.setImageUri(imageUri)
                 }
             }
             else if(data?.getData() != null){
                 var imageUri: Uri = data.data!!
                 image.setImageURI(imageUri)
-                uri = imageUri
+                // Almacena la URI en el ViewModel
+                viewModel.setImageUri(imageUri)
             }
         }
     }

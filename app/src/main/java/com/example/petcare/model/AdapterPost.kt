@@ -61,7 +61,7 @@ class AdapterPost (private var posts: List<Post>, private val listener: com.exam
                             .load(foto)
                             .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .centerCrop()
-//                            .circleCrop()
+                            .circleCrop()
                             .into(binding.imageItem)
                     }
                 }

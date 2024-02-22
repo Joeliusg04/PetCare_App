@@ -1,6 +1,7 @@
 package com.example.petcare.view
 
 import androidx.lifecycle.MutableLiveData
+import com.example.model.Post
 import com.example.model.User
 import com.example.petcare.viewmodel.ApiInterface
 import okhttp3.MultipartBody
@@ -17,6 +18,7 @@ class ApiRepository(username: String, password: String) {
     suspend fun login(usuario: User) = apiInterface.login(usuario)
     suspend fun getImage(url: String)= apiInterface.getPhoto(url)
     suspend fun deletePost(url: String) = apiInterface.deletePost(url)
-    suspend fun addPost(postId: RequestBody, owner: RequestBody, reciver: RequestBody, offers: RequestBody, tittle: RequestBody, description: RequestBody, serviceType: RequestBody, serviceTime: RequestBody, postDate: RequestBody, reward: RequestBody, location: RequestBody, image: MultipartBody.Part) = apiInterface.addPost(postId, owner, reciver,offers , tittle, description, serviceType, serviceTime, postDate, reward,location, image)
+    //suspend fun addPost(postId: RequestBody, owner: RequestBody, reciver: RequestBody, offers: RequestBody, tittle: RequestBody, description: RequestBody, serviceType: RequestBody, serviceTime: RequestBody, postDate: RequestBody, reward: RequestBody, location: RequestBody, image: MultipartBody.Part) = apiInterface.addPost(postId, owner, reciver,offers , tittle, description, serviceType, serviceTime, postDate, reward,location, image)
 
+    suspend fun addPost(post: Post) = apiInterface.addPost(post)
 }

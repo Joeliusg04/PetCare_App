@@ -17,14 +17,13 @@ import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 import android.content.ContentValues.TAG
+import androidx.lifecycle.LiveData
 
 
 class MyViewModel: ViewModel() {
     val userName = MutableLiveData<String>()
     val password = MutableLiveData<String>()
-
     var repository: ApiRepository = ApiRepository(userName.toString(), password.toString())
-
     var data = MutableLiveData<List<Post>>()
     val post= MutableLiveData<Post>()
     var currentUser= MutableLiveData<User>()
@@ -33,9 +32,12 @@ class MyViewModel: ViewModel() {
     var image : Uri? = null
     var camara = false
     var loginClean = false
-
-
-
+    private val _imageUri = MutableLiveData<Uri>()
+    val imageUri: LiveData<Uri>
+        get() = _imageUri
+    fun setImageUri(uri: Uri) {
+        _imageUri.value = uri
+    }
     fun fetchData(){
         CoroutineScope(Dispatchers.IO).launch {
             val response = repository.getPost("posts")
@@ -51,6 +53,7 @@ class MyViewModel: ViewModel() {
     }
 
 
+    /*
     fun addPost(post: Post, image: File){
         CoroutineScope(Dispatchers.IO).launch {
             val imagePart = MultipartBody.Part.createFormData("jpeg", image.name, image.asRequestBody("image/*".toMediaType()))
@@ -62,12 +65,12 @@ class MyViewModel: ViewModel() {
                         post.reciver.toString().toRequestBody("text/plain".toMediaType()),
                         post.offers.toRequestBody("text/plain".toMediaType()),
                         post.tittle.toRequestBody("text/plain".toMediaType()),
-                        post.description.toString().toRequestBody("text/plain".toMediaType()),
+                        post.description.toRequestBody("text/plain".toMediaType()),
                         post.serviceType.toRequestBody("text/plain".toMediaType()),
-                        post.serviceTime.toString().toRequestBody("text/plain".toMediaType()),
-                        post.postDate.toString().toRequestBody("text/plain".toMediaType()),
-                        post.reward.toString().toRequestBody("text/plain".toMediaType()),
-                        post.location.toString().toRequestBody("text/plain".toMediaType()),
+                        post.serviceTime.toRequestBody("text/plain".toMediaType()),
+                        post.postDate.toRequestBody("text/plain".toMediaType()),
+                        post.reward.toRequestBody("text/plain".toMediaType()),
+                        post.location.toRequestBody("text/plain".toMediaType()),
                         imagePart
                     )
                 }
@@ -86,6 +89,11 @@ class MyViewModel: ViewModel() {
 
     }
 
+
+     */
+     */
+
+    /*
     fun getPost(id: Int): List<Post>? {
         var i = 0
         var post: List<Post>? = null
@@ -96,6 +104,7 @@ class MyViewModel: ViewModel() {
         return post
     }
 
+     */
     fun getUsers(){
         CoroutineScope(Dispatchers.IO).launch {
             val response = repository.getUsers("/user")
@@ -109,10 +118,9 @@ class MyViewModel: ViewModel() {
             }
         }
     }
-
-    fun fetchPostByName(Name: String){
+    fun fetchPostByName(name: String){
         CoroutineScope(Dispatchers.IO).launch {
-            val response = repository.getPostByName("/posts/postId")
+            val response = repository.getPostByName("/posts/$name")
             withContext(Dispatchers.Main) {
                 if(response.isSuccessful){
                     data.postValue(response.body()!!)
@@ -123,7 +131,6 @@ class MyViewModel: ViewModel() {
             }
         }
     }
-
     fun deletePost (postId:Int){
         CoroutineScope(Dispatchers.IO).launch {
             repository.deletePost("posts/${currentUser.value?.id}/publicados/$postId")

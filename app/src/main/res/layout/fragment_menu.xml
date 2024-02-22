@@ -26,18 +26,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintWidth_percent="0.75" />
 
-    <TextView
-        android:id="@+id/text1"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewService"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintWidth_percent="0.75"
+        tools:listitem="@layout/postservice_item"
         app:layout_constraintStart_toStartOf="@id/myservice"
         app:layout_constraintTop_toBottomOf="@id/myservice"
-        android:layout_marginTop="5dp"
-        android:textColor="@color/black"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        android:layout_margin="15dp"
+        tools:ignore="MissingConstraints"
         android:visibility="gone"
         />
+
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/servicedone"
@@ -46,24 +47,23 @@
         android:layout_height="wrap_content"
         android:text="Services done"
         android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/text1"
+        app:layout_constraintTop_toBottomOf="@id/recyclerViewService"
         android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintWidth_percent="0.75" />
 
-    <TextView
-        android:id="@+id/text2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintWidth_percent="0.75"
-        app:layout_constraintStart_toStartOf="@id/servicedone"
-        app:layout_constraintTop_toBottomOf="@id/servicedone"
-        android:layout_marginTop="5dp"
-        android:textColor="@color/black"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        android:visibility="gone"
-        />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewServiceDone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/postservicedone_item"
+            app:layout_constraintStart_toStartOf="@id/servicedone"
+            app:layout_constraintTop_toBottomOf="@id/servicedone"
+            android:layout_margin="15dp"
+            tools:ignore="MissingConstraints"
+            android:visibility="gone"
+            />
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/complain"
         android:background="@color/sec1"
@@ -71,7 +71,7 @@
         android:layout_height="wrap_content"
         android:text="Complain"
         android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/text2"
+        app:layout_constraintTop_toBottomOf="@id/recyclerViewServiceDone"
         android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

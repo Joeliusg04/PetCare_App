@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_signupFragment_to_postsFragment"
             app:destination="@id/postsFragment" />
+        <action
+            android:id="@+id/action_signupFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/launchFragment"
@@ -81,6 +84,12 @@
         <argument
             android:name="nav"
             app:argType="boolean" />
+        <argument
+            android:name="nickname"
+            app:argType="string" />
+        <argument
+            android:name="email"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/publishFragment"
@@ -117,6 +126,18 @@
         <argument
             android:name="id"
             app:argType="integer" />
+
+        <argument android:name="date"
+            app:argType="string" />
+        <argument
+            android:name="reward"
+            app:argType="string" />
+        <argument
+            android:name="time"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_detailsPostFragment_to_postsFragment"
+            app:destination="@id/postsFragment" />
     </fragment>
 
 </navigation>

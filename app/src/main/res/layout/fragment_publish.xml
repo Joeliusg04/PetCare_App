@@ -6,305 +6,301 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background"
     tools:context=".view.PublishFragment">
+
     <ScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginEnd="15dp"
         android:layout_marginStart="15dp"
-        app:layout_constraintHeight_percent="0.95"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        >
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/publish_slide_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="@id/scroll"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/scroll"
-        android:background="@color/sec1"
-        android:padding="15dp"
-        android:paddingBottom="0dp">
+        app:layout_constraintHeight_percent="0.95"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-        <TextView
-            android:id="@+id/guia1"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/publish_slide_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ANIMAL Y RAZA"
-            android:textColor="@color/black"
-            android:padding="10dp"
-            android:textStyle="bold"
-            android:background="@color/principal"
-            app:layout_constraintTop_toTopOf="@id/publish_slide_container"
-            app:layout_constraintBottom_toTopOf="@id/animalYRaza"
-            />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/animalYRaza"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:errorEnabled="false"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="15dp"
-            app:boxBackgroundColor="@color/background"
-            app:layout_constraintBottom_toTopOf="@id/guia2"
+            android:layout_height="match_parent"
+            android:background="@color/sec1"
+            android:padding="15dp"
+            android:paddingBottom="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/scroll"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/guia1"
-            >
+            app:layout_constraintTop_toTopOf="@id/scroll">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:singleLine="true" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <TextView
-            android:id="@+id/guia2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="IMAGEN"
-            android:textColor="@color/black"
-            android:padding="10dp"
-            android:textStyle="bold"
-            android:background="@color/principal"
-            app:layout_constraintTop_toBottomOf="@id/animalYRaza"
-            app:layout_constraintBottom_toTopOf="@id/image"
-            />
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintHeight_percent="0.15"
-            android:padding="10dp"
-            android:src="@drawable/upload"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            app:layout_constraintTop_toBottomOf="@id/guia2"
-            app:layout_constraintBottom_toTopOf="@id/guia3"
-            android:background="@color/background"
-            />
-
-
-
-        <TextView
-            android:id="@+id/guia3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="DESCRIPCIÓN"
-            android:textColor="@color/black"
-            android:padding="10dp"
-            android:textStyle="bold"
-            android:background="@color/principal"
-            app:layout_constraintTop_toBottomOf="@id/image"
-            app:layout_constraintBottom_toTopOf="@id/desctipcion"
-            />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/desctipcion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="15dp"
-            app:boxBackgroundColor="@color/background"
-            app:layout_constraintBottom_toTopOf="@id/guia4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/guia3"
-            app:errorEnabled="true"
-            app:counterMaxLength="500"
-            app:counterEnabled="true"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
+            <TextView
+                android:id="@+id/guia1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/principal"
+                android:padding="10dp"
+                android:text="ANIMAL Y RAZA"
                 android:textColor="@color/black"
-                android:maxLength="500"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/animalYRaza"
+                app:layout_constraintTop_toTopOf="@id/publish_slide_container" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/animalYRaza"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                app:boxBackgroundColor="@color/background"
+                app:errorEnabled="false"
+                app:layout_constraintBottom_toTopOf="@id/guia2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/guia1">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/guia2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/principal"
+                android:padding="10dp"
+                android:text="IMAGEN"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/image"
+                app:layout_constraintTop_toBottomOf="@id/animalYRaza" />
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="@color/background"
+                android:padding="10dp"
+                android:src="@drawable/upload"
+                app:layout_constraintBottom_toTopOf="@id/guia3"
+                app:layout_constraintHeight_percent="0.15"
+                app:layout_constraintTop_toBottomOf="@id/guia2" />
+
+
+            <TextView
+                android:id="@+id/guia3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/principal"
+                android:padding="10dp"
+                android:text="DESCRIPCIÓN"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/desctipcion"
+                app:layout_constraintTop_toBottomOf="@id/image" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/desctipcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                app:boxBackgroundColor="@color/background"
+                app:counterEnabled="true"
+                app:counterMaxLength="500"
+                app:errorEnabled="true"
+                app:layout_constraintBottom_toTopOf="@id/guia4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/guia3">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="500"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/guia4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@color/principal"
+                android:padding="10dp"
+                android:text="TIPO DE SERVIVIO"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/tipo_de_servicio"
+                app:layout_constraintTop_toBottomOf="@id/desctipcion" />
+
+            <Spinner
+                android:id="@+id/tipo_de_servicio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@color/background"
+                android:entries="@array/Tipo_de_servicio"
+                android:foregroundTint="@color/black"
+                app:layout_constraintBottom_toTopOf="@id/guia5"
+                app:layout_constraintTop_toBottomOf="@id/guia4" />
+
+            <TextView
+                android:id="@+id/guia5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@color/principal"
+                android:padding="10dp"
+                android:text="DIA Y HORA"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/dia"
+                app:layout_constraintTop_toBottomOf="@id/tipo_de_servicio" />
+
+            <EditText
+                android:id="@+id/dia"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@color/background"
+                android:clickable="true"
+                android:focusable="false"
+                android:inputType="date"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintBottom_toTopOf="@id/guia6"
+                app:layout_constraintStart_toStartOf="@id/publish_slide_container"
+                app:layout_constraintTop_toBottomOf="@id/guia5"
+                app:layout_constraintWidth_percent="0.26" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inicio: "
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/guia6"
+                app:layout_constraintEnd_toStartOf="@id/horaInicio"
+                app:layout_constraintTop_toBottomOf="@id/guia5" />
+
+            <Spinner
+                android:id="@+id/horaInicio"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:entries="@array/horas"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@id/guia6"
+                app:layout_constraintEnd_toStartOf="@id/horaFinal"
+                app:layout_constraintStart_toEndOf="@id/dia"
+                app:layout_constraintTop_toBottomOf="@id/guia5"
+                app:layout_constraintWidth_percent="0.2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Final: "
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/guia6"
+                app:layout_constraintEnd_toStartOf="@id/horaFinal"
+                app:layout_constraintTop_toBottomOf="@id/guia5" />
+
+            <Spinner
+                android:id="@+id/horaFinal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:entries="@array/horas"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@id/guia6"
+                app:layout_constraintEnd_toEndOf="@id/publish_slide_container"
+                app:layout_constraintTop_toBottomOf="@id/guia5"
+                app:layout_constraintWidth_percent="0.2" />
+
+            <TextView
+                android:id="@+id/guia6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/principal"
+                android:padding="10dp"
+                android:text="RECOMPENSA"
+                android:textColor="@color/black"
+
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/reward"
+                app:layout_constraintTop_toBottomOf="@id/horaFinal" />
+
+            <EditText
+                android:id="@+id/reward"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:inputType="number"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@id/guia7"
+                app:layout_constraintStart_toStartOf="@id/publish_slide_container"
+                app:layout_constraintTop_toBottomOf="@id/guia6"
+                app:layout_constraintWidth_percent="0.40"
+
                 />
-        </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/guia4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TIPO DE SERVIVIO"
-            android:textColor="@color/black"
-            android:padding="10dp"
-            android:textStyle="bold"
-            android:layout_marginBottom="15dp"
-            android:background="@color/principal"
-            app:layout_constraintTop_toBottomOf="@id/desctipcion"
-            app:layout_constraintBottom_toTopOf="@id/tipo_de_servicio"
-            />
-        <Spinner
-            android:id="@+id/tipo_de_servicio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:foregroundTint="@color/black"
-            android:entries="@array/Tipo_de_servicio"
-            app:layout_constraintTop_toBottomOf="@id/guia4"
-            app:layout_constraintBottom_toTopOf="@id/guia5"
-            android:background="@color/background"
-            />
-        <TextView
-            android:id="@+id/guia5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="DIA Y HORA"
-            android:textColor="@color/black"
-            android:padding="10dp"
-            android:textStyle="bold"
-            android:layout_marginBottom="15dp"
-            android:background="@color/principal"
-            app:layout_constraintTop_toBottomOf="@id/tipo_de_servicio"
-            app:layout_constraintBottom_toTopOf="@id/dia"
-            />
-        <EditText
-            android:id="@+id/dia"
-            android:layout_width="0dp"
-            app:layout_constraintWidth_percent="0.26"
-            android:layout_height="wrap_content"
-            android:inputType="date"
-            android:focusable="false"
-            android:clickable="true"
-            android:maxLines="1"
-            android:textSize="14dp"
-            android:textColor="@color/black"
-            android:layout_marginBottom="15dp"
-            app:layout_constraintTop_toBottomOf="@id/guia5"
-            app:layout_constraintBottom_toTopOf="@id/guia6"
-            app:layout_constraintStart_toStartOf="@id/publish_slide_container"
-            android:background="@color/background"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Inicio: "
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/guia5"
-            app:layout_constraintBottom_toTopOf="@id/guia6"
-            app:layout_constraintEnd_toStartOf="@id/horaInicio"
-            />
-        <Spinner
-            android:id="@+id/horaInicio"
-            android:layout_width="0dp"
-            app:layout_constraintWidth_percent="0.2"
-            android:layout_height="wrap_content"
-            android:entries="@array/horas"
-            android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/guia5"
-            app:layout_constraintBottom_toTopOf="@id/guia6"
-            app:layout_constraintStart_toEndOf="@id/dia"
-            app:layout_constraintEnd_toStartOf="@id/horaFinal"
-            android:background="@color/background"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Final: "
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/guia5"
-            app:layout_constraintBottom_toTopOf="@id/guia6"
-            app:layout_constraintEnd_toStartOf="@id/horaFinal"
-            />
-        <Spinner
-            android:id="@+id/horaFinal"
-            android:layout_width="0dp"
-            app:layout_constraintWidth_percent="0.2"
-            android:layout_height="wrap_content"
-            android:entries="@array/horas"
-            android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/guia5"
-            app:layout_constraintBottom_toTopOf="@id/guia6"
-            app:layout_constraintEnd_toEndOf="@id/publish_slide_container"
-            android:background="@color/background"
-            />
-        <TextView
-            android:id="@+id/guia6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="RECOMPENSA"
-            android:textColor="@color/black"
-            android:padding="10dp"
-            android:textStyle="bold"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" €/hora"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/guia7"
+                app:layout_constraintStart_toEndOf="@id/reward"
+                app:layout_constraintTop_toBottomOf="@id/guia6"
+                app:layout_constraintWidth_percent="0.40" />
 
-            android:background="@color/principal"
-            app:layout_constraintTop_toBottomOf="@id/horaFinal"
-            app:layout_constraintBottom_toTopOf="@id/reward"
-            />
-        <EditText
-            android:id="@+id/reward"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            app:layout_constraintWidth_percent="0.40"
-            app:layout_constraintTop_toBottomOf="@id/guia6"
-            app:layout_constraintBottom_toTopOf="@id/guia7"
-            app:layout_constraintStart_toStartOf="@id/publish_slide_container"
-            android:background="@color/background"
-            android:inputType="number"
+            <TextView
+                android:id="@+id/guia7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/principal"
+                android:padding="10dp"
+                android:text="Localidad"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/localidad"
+                app:layout_constraintTop_toBottomOf="@id/reward" />
 
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintWidth_percent="0.40"
-            app:layout_constraintTop_toBottomOf="@id/guia6"
-            app:layout_constraintBottom_toTopOf="@id/guia7"
-            app:layout_constraintStart_toEndOf="@id/reward"
-            android:text=" €/hora"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            />
-        <TextView
-            android:id="@+id/guia7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Localidad"
-            android:textColor="@color/black"
-            android:padding="10dp"
-            android:textStyle="bold"
-            android:background="@color/principal"
-            app:layout_constraintTop_toBottomOf="@id/reward"
-            app:layout_constraintBottom_toTopOf="@id/localidad"
-            />
-        <Spinner
-            android:id="@+id/localidad"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/localidad"
-            android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/guia7"
-            app:layout_constraintBottom_toTopOf="@id/publish"
-            android:background="@color/background"
+            <Spinner
+                android:id="@+id/localidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:entries="@array/localidad"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@id/publish"
+                app:layout_constraintTop_toBottomOf="@id/guia7"
 
-            />
+                />
 
-        <Button
-            android:id="@+id/publish"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:text="Publicar "
-            android:textColor="@color/white"
-            android:backgroundTint="@color/dark"
-            app:layout_constraintTop_toBottomOf="@id/localidad"
-            app:layout_constraintBottom_toBottomOf="@id/publish_slide_container"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHeight_percent="0.05"
-            app:layout_constraintWidth_percent="0.7" />
+            <Button
+                android:id="@+id/publish"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:backgroundTint="@color/dark"
+                android:text="Publicar "
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/publish_slide_container"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.05"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/localidad"
+                app:layout_constraintWidth_percent="0.7" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

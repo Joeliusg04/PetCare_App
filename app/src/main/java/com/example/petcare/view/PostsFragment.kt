@@ -23,11 +23,10 @@ import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 
-
 class PostsFragment : Fragment(), OnClickListener {
-//    private val viewModel: MyViewModel by activityViewModels()
-//    private lateinit var userAdapterPost: AdapterPost
-//    private lateinit var linearLayoutManager: RecyclerView.LayoutManager
+    private val viewModel: MyViewModel by activityViewModels()
+    private lateinit var userAdapterPost: AdapterPost
+    private lateinit var linearLayoutManager: RecyclerView.LayoutManager
     lateinit var binding: FragmentPostsBinding
 
     override fun onCreateView(
@@ -43,15 +42,13 @@ class PostsFragment : Fragment(), OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val viewModel = ViewModelProvider(requireActivity())[MyViewModel::class.java]
-
         viewModel.fetchData()
 
         viewModel.data.observe(viewLifecycleOwner){
             setUpRecyclerView(it as MutableList<Post>)
         }
 
-        binding.search.setOnQueryTextListener(object : OnQueryTextListener {
+        binding.search.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query != null) {
                     if (query != "") {
@@ -82,15 +79,7 @@ class PostsFragment : Fragment(), OnClickListener {
 
     }
 
-
     fun setUpRecyclerView(listOfPost: MutableList<Post>){
-
-        val myAdapter = listOfPost.let { AdapterPost(it, this) }
-        binding.recyclerView.apply {
-            adapter = myAdapter
-            layoutManager = LinearLayoutManager(context)
-        }
-        /*
         userAdapterPost = AdapterPost(listOfPost , this)
         linearLayoutManager = LinearLayoutManager(context)
         binding.recyclerView.apply {
@@ -99,14 +88,12 @@ class PostsFragment : Fragment(), OnClickListener {
             adapter = userAdapterPost
         }
 
-         */
     }
-
 
     override fun onClick(post: Post) {
         val viewModel= ViewModelProvider(requireActivity())[MyViewModel::class.java]
         viewModel.post.postValue(post)
-        val action = PostsFragmentDirections.actionPostsFragmentToDetailsPostFragment(post.postId)
+        val action = PostsFragmentDirections.actionPostsFragmentToDetailsPostFragment(post.postId, post.postDate, post.reward, post.serviceTime)
         findNavController().navigate(action)
     }
 

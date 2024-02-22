@@ -19,8 +19,4 @@ data class Post(
     var postDate: String,
     var reward: String,
     var location: String
-){
-//    init {
-//        postDate = LocalDateTime.now().toString()
-//    }
-}
+)

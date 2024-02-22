@@ -1,13 +1,16 @@
 package com.example.petcare.view
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.model.User
@@ -20,7 +23,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class LoginFragment : Fragment() {
-
+    lateinit var myPreferences: SharedPreferences
     lateinit var binding: FragmentLoginBinding
     private val viewModel: MyViewModel by activityViewModels()
     override fun onCreateView(
@@ -48,6 +51,13 @@ class LoginFragment : Fragment() {
             findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
         }
 
+        myPreferences = requireActivity().getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
+        setupForm()
+
+        if (binding.rememberCheckbox.isChecked){
+            findNavController().navigate(R.id.action_loginFragment_to_postsFragment)
+        }
+
         binding.continuar.setOnClickListener {
             val nickname = binding.nickname.editText?.text.toString()
             val password = binding.password.editText?.text.toString()
@@ -60,9 +70,9 @@ class LoginFragment : Fragment() {
 
                     try {
                         val response = repository.login(viewModel.currentUser.value!!)
-
                         withContext(Dispatchers.Main) {
                             if (response.isSuccessful) {
+                                rememberUser(binding.nickname.editText?.text.toString(), binding.password.editText?.text.toString(), binding.rememberCheckbox.isChecked)
                                 Toast.makeText(context, "Bienvenido $nickname", Toast.LENGTH_SHORT).show()
                                 findNavController().navigate(R.id.action_loginFragment_to_postsFragment)
                             } else {
@@ -80,6 +90,40 @@ class LoginFragment : Fragment() {
             }
         }
     }
+
+    private fun rememberUser(userName: String, pass: String, remember: Boolean) {
+        if(remember){
+            myPreferences.edit {
+                putString("username", userName)
+                putString("password", pass)
+                putBoolean("remember", remember)
+                putBoolean("active", remember)
+                apply()
+            }
+        }else{
+            myPreferences.edit {
+                putString("username", "")
+                putString("password", "")
+                putBoolean("remember", remember)
+                putBoolean("active", remember)
+                apply()
+            }
+        }
+
+    }
+    private fun setupForm() {
+        val username = myPreferences.getString("username", "")
+        val pass = myPreferences.getString("password", "")
+        val remember = myPreferences.getBoolean("remember", false)
+        if (username != null) {
+            if(username.isNotEmpty()){
+                binding.nickname.editText?.setText(username)
+                binding.password.editText?.setText(pass)
+                binding.rememberCheckbox.isChecked = remember
+            }
+        }
+    }
+
 
     override fun onResume() {
         super.onResume()
