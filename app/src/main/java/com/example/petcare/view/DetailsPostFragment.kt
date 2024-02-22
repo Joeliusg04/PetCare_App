@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -48,7 +49,13 @@ class DetailsPostFragment : Fragment() {
         binding.fecha.text= "$date - $time h"
         binding.solicitar.text= "Solicitar servicio: $reward"
 
+        binding.chat.setOnClickListener {
+            Toast.makeText(context, "", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_detailsPostFragment_to_postsFragment)
+        }
+
         binding.solicitar.setOnClickListener {
+            Toast.makeText(context, "Solicitud enviada", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_detailsPostFragment_to_postsFragment)
         }
 
