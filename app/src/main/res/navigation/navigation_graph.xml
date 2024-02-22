@@ -141,6 +141,9 @@
         <action
             android:id="@+id/action_detailsPostFragment_to_messageFragment"
             app:destination="@id/messageFragment" />
+        <action
+            android:id="@+id/action_detailsPostFragment_to_profileFakeFragment"
+            app:destination="@id/profileFakeFragment" />
     </fragment>
     <fragment
         android:id="@+id/messageFragment"
@@ -151,5 +154,10 @@
             android:id="@+id/action_messageFragment_to_detailsPostFragment"
             app:destination="@id/detailsPostFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/profileFakeFragment"
+        android:name="com.example.petcare.view.ProfileFakeFragment"
+        android:label="fragment_profile_fake"
+        tools:layout="@layout/fragment_profile_fake" />
 
 </navigation>

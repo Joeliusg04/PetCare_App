@@ -11,10 +11,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.petcare.R
 import com.example.petcare.databinding.FragmentMessageBinding
 
-lateinit var binding: FragmentMessageBinding
+
 
 class MessageFragment : Fragment() {
-
+    lateinit var binding: FragmentMessageBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

@@ -52,6 +52,9 @@ class DetailsPostFragment : Fragment() {
         binding.chat.setOnClickListener {
             findNavController().navigate(R.id.action_detailsPostFragment_to_messageFragment)
         }
+        binding.perfil.setOnClickListener {
+            findNavController().navigate(R.id.action_detailsPostFragment_to_profileFakeFragment)
+        }
 
         binding.solicitar.setOnClickListener {
             Toast.makeText(context, "Solicitud enviada", Toast.LENGTH_SHORT).show()
