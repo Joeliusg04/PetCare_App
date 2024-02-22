@@ -50,8 +50,7 @@ class DetailsPostFragment : Fragment() {
         binding.solicitar.text= "Solicitar servicio: $reward"
 
         binding.chat.setOnClickListener {
-            Toast.makeText(context, "", Toast.LENGTH_SHORT).show()
-            findNavController().navigate(R.id.action_detailsPostFragment_to_postsFragment)
+            findNavController().navigate(R.id.action_detailsPostFragment_to_messageFragment)
         }
 
         binding.solicitar.setOnClickListener {
