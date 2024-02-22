@@ -12,12 +12,13 @@ import com.example.model.Post
 import com.example.petcare.R
 import com.example.petcare.databinding.PostItemBinding
 import com.example.petcare.view.ApiRepository
+import com.example.petcare.viewmodel.OnClickListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class AdapterPost (private var posts: List<Post>, private val listener: com.example.petcare.viewmodel.OnClickListener):RecyclerView.Adapter<AdapterPost.ViewHolder>() {
+class AdapterPost (private var posts: List<Post>, private var listener: OnClickListener):RecyclerView.Adapter<AdapterPost.ViewHolder>() {
     private lateinit var context: Context
     lateinit var repository: ApiRepository
 

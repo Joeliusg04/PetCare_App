@@ -49,9 +49,9 @@ interface ApiInterface {
     suspend fun login(@Body usuario: User): Response<ResponseBody>
     @POST("signup")
     suspend fun register(@Body usuario: User): Response<ResponseBody>
-
     @DELETE()
-    suspend fun deletePost (@Url url: String): Response<ResponseBody>
+    suspend fun deletePost(@Url url: String): Response<Boolean>
+
 
 
     companion object {

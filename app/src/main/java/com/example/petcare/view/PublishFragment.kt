@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -36,20 +37,25 @@ import java.util.concurrent.TimeoutException
 class PublishFragment : Fragment() {
 
     private lateinit var binding: FragmentPublishBinding
-    private lateinit var viewModel: MyViewModel
+    private lateinit var postViewModel: MyViewModel
     private var uri = ""
+    private lateinit var myPreferences: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
-        viewModel = ViewModelProvider(requireActivity())[MyViewModel::class.java]
+        postViewModel = ViewModelProvider(requireActivity())[MyViewModel::class.java]
         binding = FragmentPublishBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        myPreferences = requireActivity().getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
+
 
         if (uri != "") {
             Glide.with(requireContext())
@@ -64,6 +70,7 @@ class PublishFragment : Fragment() {
             val a = binding.horaInicio.selectedItem.toString()
             val b = binding.horaFinal.selectedItem.toString()
             val tiempoDeServivio = "$a - $b"
+            //rememberInfo(binding.incidentNameEt.text.toString(), binding.incidentDescriptionEt.text.toString(), uri, false, lat, lon)
             val post = Post(0,
             0,
             0,
@@ -77,10 +84,10 @@ class PublishFragment : Fragment() {
             binding.reward.text.toString(),
             binding.localidad.selectedItem.toString()
         )
-            viewModel.addPost(post, getFileFromUri(requireContext(), uri.toUri())!!)
+            postViewModel.addPost(post, getFileFromUri(requireContext(), uri.toUri())!!)
         }
 
-        viewModel.isPostAddedSuccessfully.observe(viewLifecycleOwner) {
+        postViewModel.isPostAddedSuccessfully.observe(viewLifecycleOwner) {
             if (it == true) {
                 findNavController().navigate(R.id.action_publishFragment_to_postsFragment)
             }
@@ -96,37 +103,48 @@ class PublishFragment : Fragment() {
             openGalleryForImages()
         }
 
-        /*
-    binding.publish.setOnClickListener {
-            val a = binding.horaInicio.selectedItem.toString()
-            val b = binding.horaFinal.selectedItem.toString()
-            val tiempoDeServivio = "$a - $b"
-            val archivo = getFileFromUri(requireContext(), uri)
-
-
-            val post = Post(0,
-                0,
-                0,
-                "",
-                binding.animalYRaza.editText?.text.toString(),
-                "",
-                binding.desctipcion.editText?.text.toString(),
-                binding.tipoDeServicio.selectedItem.toString(),
-                tiempoDeServivio,
-                binding.dia.text.toString(),
-                binding.reward.text.toString(),
-                binding.localidad.selectedItem.toString()
-            )
-
-            //viewModel.addPost(post, archivo!!)
-            findNavController().navigate(R.id.action_publishFragment_to_postsFragment)
-        }
-
-         */
-
     }
 
+    /*
 
+
+    private fun rememberInfo(name: String, desc: String, uri: String, aFoto: Boolean, lat:String, lon:String) {
+        if(aFoto){
+            myPreferences.edit {
+                putString("name", name)
+                putString("desc", desc)
+                putString("uri", uri)
+                putString("lat", lat)
+                putString("lon", lon)
+                apply()
+            }
+        }else{
+            myPreferences.edit {
+                putString("name", "")
+                putString("desc", "")
+                putString("uri", "")
+                putString("lat", "")
+                putString("lon", "")
+                apply()
+            }
+        }
+
+    }
+    private fun setupForm() {
+        val name = myPreferences.getString("name", "")
+        val desc = myPreferences.getString("desc", "")
+        uri = myPreferences.getString("uri", "").toString()
+        lat = myPreferences.getString("uri", "").toString()
+        lon = myPreferences.getString("uri", "").toString()
+        if (name != null) {
+            if(name.isNotEmpty()){
+                binding.incidentNameEt.setText(name)
+                binding.incidentDescriptionEt.setText(desc)
+            }
+        }
+    }
+
+     */
 
     private fun showDatePickerDialog() {
         val calendar = Calendar.getInstance()
@@ -184,6 +202,7 @@ class PublishFragment : Fragment() {
         }
         return if (file.exists()) file else null
     }
+
 
 
     override fun onResume() {
