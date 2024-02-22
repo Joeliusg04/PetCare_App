@@ -1,4 +1,5 @@
 package com.example.petcare.view
+import android.annotation.SuppressLint
 import android.app.Activity
 import androidx.fragment.app.Fragment
 import android.app.DatePickerDialog
@@ -10,24 +11,33 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.model.Post
 import com.example.petcare.R
 import com.example.petcare.databinding.FragmentPublishBinding
 import com.example.petcare.viewmodel.MyViewModel
 import java.io.File
 import java.util.Calendar
+import java.net.ConnectException
+import java.net.SocketException
+import java.net.SocketTimeoutException
+import java.util.concurrent.TimeoutException
 
 class PublishFragment : Fragment() {
 
     private lateinit var binding: FragmentPublishBinding
     private lateinit var viewModel: MyViewModel
-    lateinit var uri:Uri
+    private var uri = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,7 +51,53 @@ class PublishFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.publish.setOnClickListener {
+        if (uri != "") {
+            Glide.with(requireContext())
+                .load(uri.toUri())
+                .centerCrop()
+                .transform(RoundedCorners(50))
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(binding.image)
+        }
+
+        binding.publish.setOnClickListener{
+            val a = binding.horaInicio.selectedItem.toString()
+            val b = binding.horaFinal.selectedItem.toString()
+            val tiempoDeServivio = "$a - $b"
+            val post = Post(0,
+            0,
+            0,
+            "",
+            binding.animalYRaza.editText?.text.toString(),
+            "",
+            binding.desctipcion.editText?.text.toString(),
+            binding.tipoDeServicio.selectedItem.toString(),
+            tiempoDeServivio,
+            binding.dia.text.toString(),
+            binding.reward.text.toString(),
+            binding.localidad.selectedItem.toString()
+        )
+            viewModel.addPost(post, getFileFromUri(requireContext(), uri.toUri())!!)
+        }
+
+        viewModel.isPostAddedSuccessfully.observe(viewLifecycleOwner) {
+            if (it == true) {
+                findNavController().navigate(R.id.action_publishFragment_to_postsFragment)
+            }
+            else if (it == false) {
+                findNavController().navigate(R.id.action_publishFragment_to_postsFragment)
+            }
+        }
+
+        binding.dia.setOnClickListener {
+            showDatePickerDialog()
+        }
+        binding.image.setOnClickListener {
+            openGalleryForImages()
+        }
+
+        /*
+    binding.publish.setOnClickListener {
             val a = binding.horaInicio.selectedItem.toString()
             val b = binding.horaFinal.selectedItem.toString()
             val tiempoDeServivio = "$a - $b"
@@ -66,15 +122,11 @@ class PublishFragment : Fragment() {
             findNavController().navigate(R.id.action_publishFragment_to_postsFragment)
         }
 
-
-        binding.dia.setOnClickListener {
-            showDatePickerDialog()
-        }
-        binding.image.setOnClickListener {
-            openGalleryForImages()
-        }
+         */
 
     }
+
+
 
     private fun showDatePickerDialog() {
         val calendar = Calendar.getInstance()
@@ -109,13 +161,13 @@ class PublishFragment : Fragment() {
                 for(i in 0..count!! - 1){
                     var imageUri: Uri = data.clipData?.getItemAt(i)!!.uri
                     image.setImageURI(imageUri)
-                    uri = imageUri
+                    uri = imageUri.toString()
                 }
             }
             else if(data?.getData() != null){
                 var imageUri: Uri = data.data!!
                 image.setImageURI(imageUri)
-                uri = imageUri
+                uri = imageUri.toString()
             }
         }
     }

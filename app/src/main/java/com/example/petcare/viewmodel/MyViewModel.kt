@@ -32,6 +32,7 @@ class MyViewModel: ViewModel() {
     var image : Uri? = null
     var camara = false
     var loginClean = false
+    val isPostAddedSuccessfully = MutableLiveData<Boolean?>()
     private val _imageUri = MutableLiveData<Uri>()
     val imageUri: LiveData<Uri>
         get() = _imageUri
@@ -48,6 +49,34 @@ class MyViewModel: ViewModel() {
                 else{
                     Log.e("Error :", response.message())
                 }
+            }
+        }
+    }
+
+    fun addPost(post: Post, image: File){
+        val imagePart = MultipartBody.Part.createFormData("image", "image", image.asRequestBody("image/*".toMediaType()))
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = repository.addPost(
+                0,
+                1,
+                "",
+                post.tittle.toRequestBody(),
+                imagePart,
+                post.description.toRequestBody(),
+                post.serviceType.toRequestBody(),
+                post.serviceTime.toRequestBody(),
+                post.postDate.toRequestBody(),
+                post.reward.toRequestBody(),
+                post.location.toRequestBody()
+            )
+            if (response.isSuccessful) {
+                isPostAddedSuccessfully.postValue(true)
+                Log.d(TAG, "SUCCESSFUL POST: ${response.message()}")
+            }
+            else {
+                isPostAddedSuccessfully.postValue(false)
+                Log.d(TAG, "ERROR: ${response.message()}")
             }
         }
     }

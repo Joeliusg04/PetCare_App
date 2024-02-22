@@ -21,8 +21,22 @@ import retrofit2.http.Part
 import retrofit2.http.Url
 
 interface ApiInterface {
+    @Multipart
     @POST("posts")
-    suspend fun addPost(@Body post: Post): Response<ResponseBody>
+    suspend fun addPost(
+        @Part ("owner") owner: Int,
+        @Part ("reciver") reciver: Int,
+        @Part ("tittle") tittle: String,
+        @Part ("offers") offers: RequestBody,
+        @Part image: MultipartBody.Part,
+        @Part ("description") description: RequestBody,
+        @Part ("serviceType") serviceType: RequestBody,
+        @Part ("serviceTime") serviceTime: RequestBody,
+        @Part ("postDate") postDate: RequestBody,
+        @Part ("reward") reward: RequestBody,
+        @Part ("location") location: RequestBody,
+    ): Response<Post>
+
     @GET()
     suspend fun getPosts(@Url url: String): Response<List<Post>>
     @GET()
