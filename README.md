@@ -51,7 +51,7 @@
 - `Paso 1`: Ve a la pagina: https://developer.android.com/studio
 - `Paso 2`: Descarga Android Studio en la version acorde a tu sistema operativo
 - `Paso 3`: Instalar Git: https://git-scm.com/downloads
-- `Paso 4`: $ git clone [https://gitlab.com/trial-quest/trail-quest-movil.git](https://github.com/Joeliusg04/PetCare_App.git)
+- `Paso 4`: $ git clone https://github.com/Joeliusg04/PetCare_App.git
 - `Paso 5`: Abrir el proyecto con Android Studio
 - `Paso 6`: Una vez abierto, arriba en el centro verás un icono de play (:arrow_forward:)
 - `Paso 7`: Presiona el botón y a disfrutar
@@ -75,12 +75,15 @@
     En la parte de abajo de la APP, el menu se divide en cuatro opciones para el usuario:
 
     1. `PERFIL`: Puedes rellenar o modificar tu perfil de usuario, además de visualizar 
-               tu valoración como usuario.
+        tu valoración como usuario.
+        
     2. `LISTA DE OFERTAS`: Puedes visualizar todas las ofertas publicadas por un usuario.
+    
     3. `PUBLICADOR DE OFERTAS`: Puedes publicar tus ofertas de trabajo para que alguien te 
-                              la pueda solicitar.
+        la pueda solicitar.
+        
     4. `MENU`: Puedes visualizar tus ofertas subidas o realizadas, además de poder editarlas 
-             o eliminarlas. Incluso puedes cerrar sesión o eliminar tu cuenta.
+        o eliminarlas. Incluso puedes cerrar sesión o eliminar tu cuenta.
 
 
 
