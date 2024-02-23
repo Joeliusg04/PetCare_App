@@ -5,6 +5,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -18,7 +19,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class AdapterPost (private var posts: List<Post>, private var listener: OnClickListener):RecyclerView.Adapter<AdapterPost.ViewHolder>() {
+class AdapterPost (private var posts: List<Post>, private var listener: com.example.petcare.viewmodel.OnClickListener):RecyclerView.Adapter<AdapterPost.ViewHolder>() {
     private lateinit var context: Context
     lateinit var repository: ApiRepository
 
@@ -48,13 +49,20 @@ class AdapterPost (private var posts: List<Post>, private var listener: OnClickL
 
         with(holder){
             setListener(post)
+
             binding.titleItem.text = post.tittle
             binding.serviceItem.text = post.serviceType
             binding.dateItem.text = post.postDate
             binding.timeItem.text = post.serviceTime
             binding.locateItem.text = post.location
+            Glide.with(context)
+                .load(post.postPhoto)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .centerCrop()
+                .circleCrop()
+                .into(binding.imageItem)
             CoroutineScope(Dispatchers.IO).launch {
-                val response = repository.getImage("/posts/imagenes/${post.postPhoto}")
+                val response = repository.getImage("posts/imagenespost/${post.postPhoto}")
                 withContext(Dispatchers.Main){
                     if(response.isSuccessful && response.body() != null){
                         val foto = response.body()!!.bytes()

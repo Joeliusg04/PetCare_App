@@ -11,12 +11,5 @@ data class User(
     var bio: String,
     var avatar: String?,
     val password: String,
-    /*
-    var rating: List<Rating>,
-    var postrs: List<Post>,
-    var reports: List<Report>
-     */
-){
-
-}
+)
 

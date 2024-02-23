@@ -143,6 +143,7 @@ class MenuFragment : Fragment(), OnClickListener {
 
     }
 
+
     fun setUpRecyclerView2(listOfPost: MutableList<Post>){
         userPostsAdapter = PostsAdapter(listOfPost , this)
         linearLayoutManager = LinearLayoutManager(context)
@@ -153,17 +154,7 @@ class MenuFragment : Fragment(), OnClickListener {
         }
 
     }
-/*
-    fun setUpRecyclerView(listOfPost: MutableList<Post>){
 
-        val myAdapter = listOfPost.let { AdapterPost(it, this) }
-        binding.recyclerView.apply {
-            adapter = myAdapter
-            layoutManager = LinearLayoutManager(context)
-        }
-    }
-
- */
 
     override fun onResume() {
         super.onResume()

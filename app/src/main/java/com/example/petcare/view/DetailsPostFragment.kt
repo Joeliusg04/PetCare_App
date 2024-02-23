@@ -7,17 +7,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.petcare.R
 import com.example.petcare.databinding.FragmentDetailsPostBinding
 import com.example.petcare.viewmodel.MyViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class DetailsPostFragment : Fragment() {
     lateinit var binding: FragmentDetailsPostBinding
+    val repository= ApiRepository("admin", "password")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
@@ -28,7 +35,6 @@ class DetailsPostFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val viewModel = ViewModelProvider(requireActivity())[MyViewModel::class.java]
-        val id = arguments?.getInt("id")
 
         val post = viewModel.post.value!!
 
@@ -37,6 +43,22 @@ class DetailsPostFragment : Fragment() {
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(binding.image)
 
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = repository.getImage("posts/imagenespost/${post.postPhoto}")
+            withContext(Dispatchers.Main){
+                if(response.isSuccessful && response.body() != null){
+                    val foto = response.body()!!.bytes()
+                    context?.let {
+                        Glide.with(it)
+                            .load(foto)
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .centerCrop()
+                            .circleCrop()
+                            .into(binding.image)
+                    }
+                }
+            }
+        }
 
         binding.tittle.text= post.tittle
         binding.desctipcion.text= post.description
@@ -46,7 +68,7 @@ class DetailsPostFragment : Fragment() {
         val time= arguments?.getString("time")
         val reward=arguments?.getString("reward")
         binding.fecha.text= "$date - $time h"
-        binding.solicitar.text= "Solicitar servicio: $reward"
+        binding.solicitar.text= "Solicitar servicio: $reward€"
 
         binding.solicitar.setOnClickListener {
             findNavController().navigate(R.id.action_detailsPostFragment_to_postsFragment)
