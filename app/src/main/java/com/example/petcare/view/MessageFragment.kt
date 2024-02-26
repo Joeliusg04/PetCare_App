@@ -1,43 +1,46 @@
 package com.example.petcare.view
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.petcare.R
 import com.example.petcare.databinding.FragmentMessageBinding
 
-
-
 class MessageFragment : Fragment() {
-    lateinit var binding: FragmentMessageBinding
+    private lateinit var binding: FragmentMessageBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentMessageBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.cancel.setOnClickListener {
-            findNavController().navigate(R.id.action_messageFragment_to_detailsPostFragment)
-        }
 
+        binding.sendMessage.setOnClickListener {
+            sendMessage()
+        }
     }
-    override fun onStop() {
-        super.onStop()
-        val supportActionBar: ActionBar? = (requireActivity() as AppCompatActivity).supportActionBar
-        if (supportActionBar != null) supportActionBar.show()
-    }
-    override fun onResume() {
-        super.onResume()
-        val supportActionBar: ActionBar? = (requireActivity() as AppCompatActivity).supportActionBar
-        if (supportActionBar != null) supportActionBar.hide()
+
+    private fun sendMessage() {
+        val message = binding.msg.editText?.text.toString()
+        val phoneNumber = binding.tel.editText?.text.toString()
+
+        val uri = Uri.parse("https://api.whatsapp.com/send?phone=$phoneNumber&text=$message")
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        startActivity(intent)
+
+        // Optionally, navigate to another fragment after sending the message
+        findNavController().navigate(R.id.action_messageFragment_to_detailsPostFragment)
     }
 }
+
+
