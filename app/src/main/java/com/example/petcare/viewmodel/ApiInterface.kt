@@ -55,7 +55,7 @@ interface ApiInterface {
 
 
     companion object {
-        val BASE_URL = "http://172.23.6.128:8080/"
+        val BASE_URL = "http://192.168.1.65:8080/"
 
         fun create(username: String, password: String): ApiInterface {
             val digestAuthenticator = DigestAuthenticator(Credentials(username, password))
