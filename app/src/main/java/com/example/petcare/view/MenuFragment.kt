@@ -34,7 +34,7 @@ class MenuFragment : Fragment(), OnClickListener {
     lateinit var binding: FragmentMenuBinding
     private lateinit var myPreferences: SharedPreferences
     private val viewModel: MyViewModel by activityViewModels()
-    private lateinit var userPostsAdapter: PostsAdapter
+    private lateinit var userPostsAdapter: AdapterPost
     private lateinit var linearLayoutManager: RecyclerView.LayoutManager
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -133,7 +133,7 @@ class MenuFragment : Fragment(), OnClickListener {
     }
 
     fun setUpRecyclerView1(listOfPost: MutableList<Post>){
-        userPostsAdapter = PostsAdapter(listOfPost , this)
+        userPostsAdapter = AdapterPost(listOfPost , this)
         linearLayoutManager = LinearLayoutManager(context)
         binding.recyclerViewService.apply {
             setHasFixedSize(true)
@@ -143,8 +143,9 @@ class MenuFragment : Fragment(), OnClickListener {
 
     }
 
+
     fun setUpRecyclerView2(listOfPost: MutableList<Post>){
-        userPostsAdapter = PostsAdapter(listOfPost , this)
+        userPostsAdapter = AdapterPost(listOfPost , this)
         linearLayoutManager = LinearLayoutManager(context)
         binding.recyclerViewServiceDone.apply {
             setHasFixedSize(true)
@@ -153,17 +154,7 @@ class MenuFragment : Fragment(), OnClickListener {
         }
 
     }
-/*
-    fun setUpRecyclerView(listOfPost: MutableList<Post>){
 
-        val myAdapter = listOfPost.let { AdapterPost(it, this) }
-        binding.recyclerView.apply {
-            adapter = myAdapter
-            layoutManager = LinearLayoutManager(context)
-        }
-    }
-
- */
 
     override fun onResume() {
         super.onResume()

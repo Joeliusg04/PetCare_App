@@ -98,6 +98,9 @@
         <action
             android:id="@+id/action_publishFragment_to_postsFragment"
             app:destination="@id/postsFragment" />
+        <action
+            android:id="@+id/action_publishFragment_to_camaraFragment"
+            app:destination="@id/camaraFragment" />
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
@@ -144,6 +147,15 @@
         <action
             android:id="@+id/action_detailsPostFragment_to_profileFakeFragment"
             app:destination="@id/profileFakeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/camaraFragment"
+        android:name="com.example.petcare.view.CamaraFragment"
+        android:label="fragment_camara"
+        tools:layout="@layout/fragment_camara" >
+        <action
+            android:id="@+id/action_camaraFragment_to_publishFragment"
+            app:destination="@id/publishFragment" />
     </fragment>
     <fragment
         android:id="@+id/messageFragment"

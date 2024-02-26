@@ -18,23 +18,24 @@ import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
+import retrofit2.http.Path
 import retrofit2.http.Url
 
 interface ApiInterface {
     @Multipart
     @POST("posts")
     suspend fun addPost(
+        @Part ("tittle") tittle: String,
         @Part ("owner") owner: Int,
         @Part ("reciver") reciver: Int,
-        @Part ("tittle") tittle: String,
-        @Part ("offers") offers: RequestBody,
+        @Part ("offers") offers: String,
         @Part image: MultipartBody.Part,
-        @Part ("description") description: RequestBody,
-        @Part ("serviceType") serviceType: RequestBody,
-        @Part ("serviceTime") serviceTime: RequestBody,
-        @Part ("postDate") postDate: RequestBody,
-        @Part ("reward") reward: RequestBody,
-        @Part ("location") location: RequestBody,
+        @Part ("description") description: String,
+        @Part ("serviceType") serviceType: String,
+        @Part ("serviceTime") serviceTime: String,
+        @Part ("postDate") postDate: String,
+        @Part ("reward") reward: String,
+        @Part ("location") location: String,
     ): Response<Post>
 
     @GET()
@@ -55,7 +56,7 @@ interface ApiInterface {
 
 
     companion object {
-        val BASE_URL = "http://192.168.1.65:8080/"
+        val BASE_URL = "http://172.23.6.128:8080/"
 
         fun create(username: String, password: String): ApiInterface {
             val digestAuthenticator = DigestAuthenticator(Credentials(username, password))

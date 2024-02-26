@@ -49,6 +49,12 @@ class PostsAdapter (private var posts: List<Post>, private val listener: com.exa
         with(holder){
             setListener(post)
             binding.titleItem.text = post.tittle
+            Glide.with(context)
+                .load(post.postPhoto)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .centerCrop()
+                .circleCrop()
+                .into(binding.imageItem)
             CoroutineScope(Dispatchers.IO).launch {
                 val response = repository.getImage("/posts/imagenes/${post.postPhoto}")
                 withContext(Dispatchers.Main){
@@ -67,48 +73,4 @@ class PostsAdapter (private var posts: List<Post>, private val listener: com.exa
     }
 
 }
-/*
-class PostsAdapter (private val posts: List<Post>,private val listener: OnClickListener): RecyclerView.Adapter<PostsAdapter.ViewHolder>() {
 
-    inner class ViewHolder(view: View): RecyclerView.ViewHolder(view){
-        val binding = PostItemBinding.bind(view)
-        fun setListener(post: Post){
-            binding.root.setOnClickListener {
-                listener.onClick(post)
-            }
-        }
-    }
-
-    private lateinit var context: Context
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        context = parent.context
-        val view = LayoutInflater.from(context).inflate(R.layout.post_item, parent, false)
-        return ViewHolder(view)
-    }
-
-    override fun getItemCount(): Int {
-        return posts.size
-    }
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val post = posts[position]
-
-        with(holder){
-            setListener(post)
-            binding.titleItem.text = post.tittle
-            binding.serviceItem.text = post.serviceType
-            binding.dateItem.text = post.postDate
-            binding.timeItem.text = post.serviceTime
-            binding.locateItem.text = post.location
-            Glide.with(context)
-                .load(post.postPhoto)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .centerCrop()
-                .into(binding.imageItem)
-        }
-    }
-
-
-}
-
- */

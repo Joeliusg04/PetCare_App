@@ -17,6 +17,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.camera.core.ImageCapture
 import androidx.core.net.toUri
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -38,7 +39,10 @@ class PublishFragment : Fragment() {
 
     private lateinit var binding: FragmentPublishBinding
     private lateinit var postViewModel: MyViewModel
-    private var uri = ""
+    var uri = ""
+    private var imageCapture: ImageCapture? = null
+    private lateinit var outputDirectory: File
+
     private lateinit var myPreferences: SharedPreferences
 
     override fun onCreateView(
@@ -57,6 +61,7 @@ class PublishFragment : Fragment() {
         myPreferences = requireActivity().getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
 
 
+
         if (uri != "") {
             Glide.with(requireContext())
                 .load(uri.toUri())
@@ -66,85 +71,61 @@ class PublishFragment : Fragment() {
                 .into(binding.image)
         }
 
+
         binding.publish.setOnClickListener{
             val a = binding.horaInicio.selectedItem.toString()
             val b = binding.horaFinal.selectedItem.toString()
             val tiempoDeServivio = "$a - $b"
-            //rememberInfo(binding.incidentNameEt.text.toString(), binding.incidentDescriptionEt.text.toString(), uri, false, lat, lon)
-            val post = Post(0,
-            0,
-            0,
-            "",
-            binding.animalYRaza.editText?.text.toString(),
-            "",
-            binding.desctipcion.editText?.text.toString(),
-            binding.tipoDeServicio.selectedItem.toString(),
-            tiempoDeServivio,
-            binding.dia.text.toString(),
-            binding.reward.text.toString(),
-            binding.localidad.selectedItem.toString()
-        )
-            postViewModel.addPost(post, getFileFromUri(requireContext(), uri.toUri())!!)
-        }
+            if (binding.animalYRaza.editText?.text.toString() != "" && postViewModel.fotohecha){
+                val oferta= Post(
+                    0,
+                    binding.animalYRaza.editText?.text.toString(),
+                    0,
+                    0,
+                    "",
+                    "",
+                    binding.desctipcion.editText?.text.toString(),
+                    binding.tipoDeServicio.selectedItem.toString(),
+                    tiempoDeServivio,
+                    binding.dia.text.toString(),
+                    binding.reward.text.toString(),
+                    binding.localidad.selectedItem.toString()
+                )
+                postViewModel.postResena(oferta, postViewModel.image)
+                findNavController().navigate(R.id.action_publishFragment_to_postsFragment)
+            }
+            else{
+                Toast.makeText(context, "Error al añadir oferta de trabajo", Toast.LENGTH_LONG).show()
+            }
 
-        postViewModel.isPostAddedSuccessfully.observe(viewLifecycleOwner) {
-            if (it == true) {
-                findNavController().navigate(R.id.action_publishFragment_to_postsFragment)
-            }
-            else if (it == false) {
-                findNavController().navigate(R.id.action_publishFragment_to_postsFragment)
-            }
         }
 
         binding.dia.setOnClickListener {
             showDatePickerDialog()
         }
         binding.image.setOnClickListener {
-            openGalleryForImages()
+            findNavController().navigate(R.id.action_publishFragment_to_camaraFragment)
+            postViewModel.camara = true
+
         }
 
     }
 
-    /*
-
-
-    private fun rememberInfo(name: String, desc: String, uri: String, aFoto: Boolean, lat:String, lon:String) {
-        if(aFoto){
-            myPreferences.edit {
-                putString("name", name)
-                putString("desc", desc)
-                putString("uri", uri)
-                putString("lat", lat)
-                putString("lon", lon)
-                apply()
-            }
-        }else{
-            myPreferences.edit {
-                putString("name", "")
-                putString("desc", "")
-                putString("uri", "")
-                putString("lat", "")
-                putString("lon", "")
-                apply()
-            }
-        }
-
-    }
-    private fun setupForm() {
-        val name = myPreferences.getString("name", "")
-        val desc = myPreferences.getString("desc", "")
-        uri = myPreferences.getString("uri", "").toString()
-        lat = myPreferences.getString("uri", "").toString()
-        lon = myPreferences.getString("uri", "").toString()
-        if (name != null) {
-            if(name.isNotEmpty()){
-                binding.incidentNameEt.setText(name)
-                binding.incidentDescriptionEt.setText(desc)
+    private fun loadCapturedImage() {
+        if (postViewModel.camara) {
+            postViewModel.camara = false
+            uri =
+                postViewModel.image.toString()
+            if (uri.isNotEmpty()) {
+                Glide.with(requireContext())
+                    .load(uri.toUri())
+                    .centerCrop()
+                    .transform(RoundedCorners(50))
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(binding.image)
             }
         }
     }
-
-     */
 
     private fun showDatePickerDialog() {
         val calendar = Calendar.getInstance()
@@ -207,6 +188,7 @@ class PublishFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        loadCapturedImage()
         val supportActionBar: ActionBar? = (requireActivity() as AppCompatActivity).supportActionBar
         if (supportActionBar != null) supportActionBar.hide()
     }

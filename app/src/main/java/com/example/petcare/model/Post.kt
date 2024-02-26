@@ -8,10 +8,10 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Post(
     var postId: Int,
+    var tittle: String,
     var owner: Int,
     var reciver: Int,
     var offers: String,
-    var tittle: String,
     var postPhoto: String,
     var description: String,
     var serviceType: String,

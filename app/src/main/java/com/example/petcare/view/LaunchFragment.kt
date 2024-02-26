@@ -16,7 +16,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-
 class LaunchFragment : Fragment() {
     lateinit var binding: FragmentLaunchBinding
 
